@@ -11,6 +11,7 @@ else
 set clipboard=unnamed
 endif
 
+cmap w!! w !sudo tee > /dev/null %
 
 let s:editor_root=expand("~/.nvim")
 

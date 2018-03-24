@@ -11,13 +11,16 @@ else
 set clipboard=unnamed
 endif
 
+filetype plugin indent on
+
+
 cmap w!! w !sudo tee > /dev/null %
 
-let s:editor_root=expand("~/.nvim")
+
+let s:editor_root=expand('~/.nvim')
 
 let vundle_installed=1
 let vundle_readme=s:editor_root . '/bundle/vundle/README.md'
-
 
 if !filereadable(vundle_readme)
 	echo "Installing Vundle.."
@@ -32,6 +35,7 @@ let &rtp = &rtp . ',' . s:editor_root . '/bundle/vundle/'
 call vundle#rc(s:editor_root . '/bundle')
 	Bundle 'scrooloose/nerdtree'
 	"Bundle 'scrooloose/syntastic'
+	Plugin 'vim-scripts/indentpython.vim'
 	Bundle 'Valloric/YouCompleteMe'
 	Bundle 'altercation/vim-colors-solarized'
 if vundle_installed == 0

@@ -6,16 +6,15 @@ set hidden
 set showcmd
 
 if has('unnamedplus')
-set clipboard=unnamedplus
+	set clipboard=unnamedplus
 else
-set clipboard=unnamed
+	set clipboard=unnamed
 endif
 
 filetype plugin indent on
 
 
 cmap w!! w !sudo tee > /dev/null %
-
 
 let s:editor_root=expand('~/.nvim')
 
@@ -33,11 +32,13 @@ endif
 
 let &rtp = &rtp . ',' . s:editor_root . '/bundle/vundle/'
 call vundle#rc(s:editor_root . '/bundle')
-	Bundle 'scrooloose/nerdtree'
-	"Bundle 'scrooloose/syntastic'
-	Plugin 'vim-scripts/indentpython.vim'
-	Bundle 'Valloric/YouCompleteMe'
-	Bundle 'altercation/vim-colors-solarized'
+
+Bundle 'scrooloose/nerdtree'
+"Bundle 'scrooloose/syntastic'
+Plugin 'vim-scripts/indentpython.vim'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'altercation/vim-colors-solarized'
+
 if vundle_installed == 0
 	echo "installing"
 	:BundleInstall

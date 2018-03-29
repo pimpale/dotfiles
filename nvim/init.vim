@@ -44,8 +44,6 @@ if vundle_installed == 0
 	:BundleInstall
 endif
 
-vundle_installed
-
 
 colorscheme elflord 
 

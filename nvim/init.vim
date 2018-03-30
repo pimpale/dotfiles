@@ -14,6 +14,14 @@ endif
 filetype plugin indent on
 
 
+func! DeleteTrailingWS()
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
+endfunc
+
+command DeleteWhiteSpace execute DeleteTrailingWS()
+
 cmap w!! w !sudo tee > /dev/null %
 
 let s:editor_root=expand('~/.nvim')
@@ -45,12 +53,11 @@ if vundle_installed == 0
 endif
 
 
-colorscheme elflord 
+colorscheme elflord
 
-
-nmap <ESC>t :NERDTreeToggle<CR>
-
-
+nmap <leader>ne :NERDTree<cr>
+nmap <leader>nt :NERDTree<cr>
+nmap <leader>nq :NERDTreeClose<cr>
 
 
 "

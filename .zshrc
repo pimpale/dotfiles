@@ -97,17 +97,17 @@ source $ZSH/oh-my-zsh.sh
 
 
 
-export LC_CTYPE=en_US.UTF-8
+#export LC_CTYPE=en_US.UTF-8
 
 bindkey -e
 
 unalias 9
+
 #for our good old linux box
 alias wol-t4700="wol 66:66:66:66:66:66"
 
 #helpfulness
 alias rm="rm -i"
-#alias vim="emacs -nw"
 
 #misspellings
 alias sduo=sudo
@@ -116,6 +116,7 @@ alias sudi=sudo
 alias clea=clear
 alias sl=ls
 alias s=ls
+alias ks=ls
 alias ls-a="ls -a"
 alias ,,=..
 alias wget-recursive-get="wget -r -nH --cut-dirs=2 --no-parent"

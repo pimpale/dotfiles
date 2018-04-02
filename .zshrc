@@ -99,6 +99,8 @@ source $ZSH/oh-my-zsh.sh
 
 export LC_CTYPE=en_US.UTF-8
 
+bindkey -e
+
 unalias 9
 #for our good old linux box
 alias wol-t4700="wol 66:66:66:66:66:66"

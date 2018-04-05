@@ -30,7 +30,6 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec st 
-bindsym $mod+Shift+Return exec terminator
 # kill focused window
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+x --release exec --no-startup-id xkill
@@ -66,7 +65,7 @@ bindsym $mod+Shift+h split h
 bindsym $mod+Shift+v split v
 
 # tabs
-bindsym $mod+Shift+t tabbed toggle
+bindsym $mod+Shift+t layout toggle tabbed splith 
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle

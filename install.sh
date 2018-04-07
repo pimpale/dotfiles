@@ -1,12 +1,13 @@
 #!/bin/sh
 
 #check dependencies
-git --version
-curl --version
-nvim --version
-i3 --version 
-i3status --version
-htop --version
+$(git --version)
+$(curl --version)
+$(nvim --version)
+$(i3 --version )
+$(i3status --version)
+$(htop --version)
+$(zathura --version)
 
 pwd=$(pwd)
 
@@ -16,5 +17,5 @@ ln -si "$pwd/nvim" ~/.config
 ln -si "$pwd/htop" ~/.config
 ln -si "$pwd/i3" ~/.config
 ln -si "$pwd/i3status" ~/.config
-
+ln -si "$pwd/zathura" ~/.config
 

@@ -41,7 +41,7 @@ bindsym $mod+Shift+c exec "gnome-screenshot -i"
 # App shortcuts
 bindsym $mod+Shift+w exec "/usr/bin/firefox"
 bindsym $mod+w exec "/usr/local/bin/surf"
-
+bindsym $mod+n exec --no-startup-id "nitrogen --restore"
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -202,4 +202,3 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #exec --no-startup-id "compton -CG"
 exec --no-startup-id "nm-applet"
 exec --no-startup-id "blueman-applet"
-exec --no-startup-id "nitrogen --restore"

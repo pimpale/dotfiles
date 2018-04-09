@@ -178,7 +178,6 @@ bar {
 # floating windows
 for_window [class="Pavucontrol"] floating enable
 
-
 # Multimedia Keys
 
 

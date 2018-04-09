@@ -101,7 +101,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
-
+export VISUAL="nvim"
 export LC_CTYPE=en_US.UTF-8
 
 bindkey -e

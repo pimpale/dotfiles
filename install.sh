@@ -1,14 +1,5 @@
 #!/bin/sh
 
-#check dependencies
-$(git --version)
-$(curl --version)
-$(nvim --version)
-$(i3 --version )
-$(i3status --version)
-$(htop --version)
-$(zathura --version)
-
 pwd=$(pwd)
 
 ln -si "$pwd/zshrc" ~/.zshrc 

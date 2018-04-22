@@ -128,9 +128,6 @@ alias scd=cd
 alias ,,=..
 alias wget-recursive-get="wget -r -nH --cut-dirs=2 --no-parent"
 
-
-
-
 #cat ~/Pictures/pastas/shrek.swf.zip
 
 

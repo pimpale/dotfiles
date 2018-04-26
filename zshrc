@@ -105,8 +105,10 @@ export VISUAL="nvim"
 export LC_CTYPE=en_US.UTF-8
 
 bindkey -e
-
+#plan 9 is the superior operating system
 unalias 9
+PLAN9=/opt/plan9 export PLAN9
+PATH=$PATH:$PLAN9/bin export PATH
 
 #for our good old linux box
 alias wol-t4700="wol 66:66:66:66:66:66"

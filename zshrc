@@ -115,21 +115,16 @@ alias wol-t4700="wol 66:66:66:66:66:66"
 
 #helpfulness
 alias rm="rm -i"
-alias vim="nvim"
 
 #misspellings
 alias sduo=sudo
 alias sdudo=sudo
 alias sudi=sudo
 alias clea=clear
-alias sl=ls
-alias s=ls
-alias ks=ls
+alias sl="9 ls"
+alias s="9 ls"
+alias ks="9 ls"
 alias ls-a="ls -a"
 alias scd=cd
 alias ,,=..
 alias wget-recursive-get="wget -r -nH --cut-dirs=2 --no-parent"
-
-#cat ~/Pictures/pastas/shrek.swf.zip
-
-

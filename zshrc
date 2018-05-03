@@ -101,14 +101,14 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
+#My favorites
 export VISUAL="nvim"
 export LC_CTYPE=en_US.UTF-8
-
 bindkey -e
-#plan 9 is the superior operating system
-unalias 9
-export PLAN9="/opt/plan9"
-export PATH=$PATH:$PLAN9/bin
+
+#add our scripts to el path
+export PATH=$PATH:$(realpath ./scripts)
+
 
 #for our good old linux box
 alias wol-t4700="wol 66:66:66:66:66:66"
@@ -128,3 +128,8 @@ alias ls-a="ls -a"
 alias scd=cd
 alias ,,=..
 alias wget-recursive-get="wget -r -nH --cut-dirs=2 --no-parent"
+
+#plan 9 is the superior operating system
+unalias 9
+export PLAN9="/opt/plan9"
+export PATH=$PATH:$PLAN9/bin

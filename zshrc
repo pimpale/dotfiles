@@ -107,7 +107,7 @@ export LC_CTYPE=en_US.UTF-8
 bindkey -e
 
 #add our scripts to el path
-export PATH=$PATH:$(realpath ./scripts)
+export PATH=$PATH:$(realpath ~/dotfiles/scripts)
 
 
 #for our good old linux box

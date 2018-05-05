@@ -1,0 +1,2 @@
+#!/bin/sh
+du $* | awk '{print $2}' | sort | sed 's/[^\/]+\//	/g'

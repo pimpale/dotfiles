@@ -1,7 +1,6 @@
 #!/bin/sh
 
-pwd=$(pwd)
-
+pwd=$(realpath ~/dotfiles/linux)
 
 rm -ri ~/.zshrc
 rm -ri ~/.ycm_extra_conf.py

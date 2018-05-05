@@ -1,3 +1,2 @@
 #!/bin/sh
-
-./background 9term 9 rc
+background 9term 9 rc

@@ -1,12 +1,8 @@
 #!/bin/zsh
 
-pwd=$(~/dotfiles)
-
-./uninstall.sh
-
+pwd="~/dotfiles"
 mkdir ~/.config
-
-ln -s "$pwd/zshrc" ~/.zshrc 
+ln -s "$pwd/zshrc.zsh" ~/.zshrc 
 ln -s "$pwd/ycm_extra_conf.py" ~/.ycm_extra_conf.py
 ln -s "$pwd/nvim" ~/.config
 ln -s "$pwd/htop" ~/.config

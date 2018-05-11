@@ -1,11 +1,12 @@
 #!/bin/zsh
 
-pwd="~/dotfiles"
-mkdir ~/.config
-ln -s "$pwd/zshrc.zsh" ~/.zshrc 
-ln -s "$pwd/ycm_extra_conf.py" ~/.ycm_extra_conf.py
-ln -s "$pwd/nvim" ~/.config
-ln -s "$pwd/htop" ~/.config
-ln -s "$pwd/i3" ~/.config
-ln -s "$pwd/i3status" ~/.config
-ln -s "$pwd/zathura" ~/.config
+pwd="$HOME/dotfiles"
+mkdir "$HOME/.config"
+
+ln -s "$pwd/ycm_extra_conf.py" "$HOME/.ycm_extra_conf.py"
+ln -s "$pwd/zshrc.zsh" "$HOME/.zshrc"
+ln -s "$pwd/nvim" "$HOME/.config"
+ln -s "$pwd/htop" "$HOME/.config"
+ln -s "$pwd/i3" "$HOME/.config"
+ln -s "$pwd/i3status" "$HOME/.config"
+ln -s "$pwd/zathura" "$HOME/.config"

@@ -80,7 +80,7 @@ export LC_CTYPE=en_US.UTF-8
 bindkey -e
 
 #add our scripts to el path
-export PATH=$PATH:$(realpath ~/dotfiles/linux/scripts)
+export PATH=$PATH:$($HOME/dotfiles/bin)
 
 
 #for our good old linux box

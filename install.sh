@@ -1,6 +1,6 @@
 #!/bin/sh
 
-pwd=$(realpath ~/dotfiles/linux)
+pwd=$(~/dotfiles)
 
 rm -ri ~/.zshrc
 rm -ri ~/.ycm_extra_conf.py
@@ -11,7 +11,6 @@ rm -ri ~/.config/i3status
 rm -ri ~/.config/zathura
 
 mkdir ~/.config
-mkdir ~/.emacs.d
 
 ln -s "$pwd/zshrc" ~/.zshrc 
 ln -s "$pwd/ycm_extra_conf.py" ~/.ycm_extra_conf.py

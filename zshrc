@@ -71,6 +71,9 @@ else
 	source $ZSH/oh-my-zsh.sh
 fi
 
+
+export PATH=$HOME/bin
+
 #My favorites
 export VISUAL="vi"
 export EDITOR="vi"

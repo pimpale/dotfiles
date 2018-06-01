@@ -72,7 +72,7 @@ else
 fi
 
 
-export PATH=$HOME/bin
+export PATH=$PATH:"$HOME/bin"
 
 #My favorites
 export VISUAL="vi"

@@ -75,8 +75,8 @@ fi
 export PATH=$PATH:"$HOME/bin"
 
 #My favorites
-export VISUAL="vi"
-export EDITOR="vi"
+export VISUAL="nvim"
+export EDITOR="nvim"
 export LC_CTYPE=en_US.UTF-8
 bindkey -e
 

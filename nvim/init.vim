@@ -42,8 +42,10 @@ let &rtp = &rtp . ',' . s:editor_root . '/bundle/vundle/'
 call vundle#rc(s:editor_root . '/bundle')
 
 Bundle 'scrooloose/nerdtree'
-"Bundle 'scrooloose/syntastic'
-Plugin 'vim-scripts/indentpython.vim'
+Bundle 'scrooloose/syntastic'
+Bundle 'pangloss/vim-javascript'
+Bundle 'mxw/vim-jsx'
+Bundle 'vim-scripts/indentpython.vim'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'altercation/vim-colors-solarized'
 

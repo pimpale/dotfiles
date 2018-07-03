@@ -89,6 +89,7 @@ alias wol-t4700="wol 66:66:66:66:66:66"
 
 #helpfulness
 alias rm="rm -i"
+alias cp="cp -r"
 
 #misspellings
 alias sduo=sudo

@@ -101,6 +101,7 @@ alias s="ls"
 alias ks="ls"
 alias ls-a="ls -a"
 alias scd=cd
+alias "cd.."="cd .."
 alias ,,=..
 alias wget-recursive-get="wget -r -nH --cut-dirs=2 --no-parent"
 

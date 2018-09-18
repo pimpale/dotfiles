@@ -13,14 +13,17 @@ endif
 
 filetype plugin indent on
 
+func! Chomp(string)
+    return substitute(a:string, '\n\+$', '', '')
+endfunc
 
-func! DeleteTrailingWS()
+func! DeleteTrailingWhitespace()
   exe "normal mz"
   %s/\s\+$//ge
   exe "normal `z"
 endfunc
 
-command DeleteWhiteSpace execute DeleteTrailingWS()
+command DeleteWhiteSpace execute DeleteTrailingWhitespace()
 
 cmap w!! w !sudo tee > /dev/null %
 
@@ -41,59 +44,31 @@ endif
 let &rtp = &rtp . ',' . s:editor_root . '/bundle/vundle/'
 call vundle#rc(s:editor_root . '/bundle')
 
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
-Bundle 'pangloss/vim-javascript'
-Bundle 'mxw/vim-jsx'
-Bundle 'vim-scripts/indentpython.vim'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'altercation/vim-colors-solarized'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'sebastianmarkow/deoplete-rust'
+Plugin 'altercation/vim-colors-solarized'
 
 if vundle_installed == 0
 	echo "installing"
-	:BundleInstall
+	:PluginInstall
 endif
 
+let g:deoplete#sources#rust#racer_binary=Chomp(system('realpath ~/.cargo/bin/racer'))
+let g:deoplete#sources#rust#rust_source_path=Chomp(system('realpath $(rustc --print sysroot)/lib/rustlib/src/rust/src'))
 
 colorscheme elflord
 
-nmap <leader>ne :NERDTree<cr>
-nmap <leader>nt :NERDTree<cr>
-nmap <leader>nq :NERDTreeClose<cr>
-
-
-"
-" YouCompleteMe options
-"
-
-let g:ycm_register_as_syntastic_checker = 1 "default 1
-let g:Show_diagnostics_ui = 1 "default 1
-
-"will put icons in Vim's gutter on lines that have a diagnostic set.
-"Turning this off will also turn off the YcmErrorLine and YcmWarningLine
-"highlighting
-let g:ycm_enable_diagnostic_signs = 1
-let g:ycm_enable_diagnostic_highlighting = 0
-let g:ycm_always_populate_location_list = 1 "default 0
-let g:ycm_open_loclist_on_ycm_diags = 1 "default 1
-let g:ycm_server_keep_logfiles = 1
-
-let g:ycm_complete_in_strings = 1 "default 1
-let g:ycm_collect_identifiers_from_tags_files = 0 "default 0
-let g:ycm_path_to_python_interpreter = '' "default ''
-
-
-let g:ycm_server_use_vim_stdout = 1 "default 0 (logging to console)
-let g:ycm_server_log_level = 'debug'
-
-
-let g:ycm_global_ycm_extra_conf = (s:editor_root . '.ycm_extra_conf.py')
-let g:ycm_confirm_extra_conf = 1
-
-
-let g:ycm_goto_buffer_command = 'same-buffer' "[ 'same-buffer', 'horizontal-split', 'vertical-split', 'new-tab' ]
-let g:ycm_filetype_whitelist = { '*': 1 }
-let g:ycm_key_invoke_completion = '<C-Space>'
-
-
-nnoremap <F11> :YcmForceCompileAndDiagnostics <CR>
+" glorious readline
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+cnoremap <M-b> <S-Left>
+cnoremap <M-f> <S-Right>

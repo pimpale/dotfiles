@@ -1,5 +1,5 @@
 if [ -x $(which light) ]; then
-	light -A $1
+	light -A $1;
 else
-	xbaclight -inc $1
+	xbacklight -inc $1;
 fi

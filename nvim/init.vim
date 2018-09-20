@@ -50,6 +50,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'Shougo/deoplete.nvim'
+Plugin 'rust-lang/rust.vim'
 Plugin 'sebastianmarkow/deoplete-rust'
 Plugin 'altercation/vim-colors-solarized'
 
@@ -60,7 +61,7 @@ endif
 
 let g:deoplete#sources#rust#racer_binary=Chomp(system('realpath ~/.cargo/bin/racer'))
 let g:deoplete#sources#rust#rust_source_path=Chomp(system('realpath $(rustc --print sysroot)/lib/rustlib/src/rust/src'))
-
+let g:deoplete#enable_at_startup = 1
 colorscheme elflord
 
 " glorious readline

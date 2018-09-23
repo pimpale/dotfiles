@@ -4,6 +4,8 @@ set mouse=a
 set number
 set hidden
 set showcmd
+set tabstop=4
+colorscheme elflord
 
 if has('unnamedplus')
 	set clipboard=unnamedplus
@@ -53,7 +55,6 @@ Plugin 'Shougo/deoplete.nvim'
 Plugin 'rust-lang/rust.vim'
 Plugin 'sebastianmarkow/deoplete-rust'
 Plugin 'zchee/deoplete-clang'
-Plugin 'altercation/vim-colors-solarized'
 
 if vundle_installed == 0
 	echo "installing"
@@ -64,14 +65,16 @@ endif
 let g:deoplete#enable_at_startup = 1
 
 " rust config
-let g:deoplete#sources#rust#racer_binary=Chomp(system('realpath ~/.cargo/bin/racer'))
-let g:deoplete#sources#rust#rust_source_path=Chomp(system('realpath $(rustc --print sysroot)/lib/rustlib/src/rust/src'))
+let g:deoplete#sources#rust#racer_binary=Chomp(system('which racer'))
+let g:deoplete#sources#rust#rust_source_path=Chomp(system('realpath $(rustup run nightly rustc --print sysroot)/lib/rustlib/src/rust/src'))
+
+let g:rustfmt_autosave = 1
+let g:rustfmt_command = 'rustup run nightly rustfmt'
 
 " clang config
 let g:deoplete#sources#clang#libclang_path = '/lib/libclang.so'
 let g:deoplete#sources#clang#clang_header = '/lib/clang'
 
-colorscheme elflord
 
 " glorious readline
 cnoremap <C-a> <Home>
@@ -82,3 +85,6 @@ cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 cnoremap <M-b> <S-Left>
 cnoremap <M-f> <S-Right>
+
+" save me from terminal mode
+" tnoremap <Esc> <C-\><C-n>

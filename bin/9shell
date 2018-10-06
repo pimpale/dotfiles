@@ -1,2 +1,2 @@
 #!/bin/sh
-background 9term 9 rc
+dotfiles-background 9term 9 rc

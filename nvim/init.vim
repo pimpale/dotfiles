@@ -55,6 +55,7 @@ Plugin 'Shougo/deoplete.nvim'
 Plugin 'rust-lang/rust.vim'
 Plugin 'sebastianmarkow/deoplete-rust'
 Plugin 'zchee/deoplete-clang'
+Plugin 'artur-shaik/vim-javacomplete2'
 
 if vundle_installed == 0
 	echo "installing"

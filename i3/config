@@ -182,10 +182,10 @@ for_window [class="Pavucontrol"] floating enable
 # Multimedia Keys
 
 
-bindsym XF86MonBrightnessUp exec dotfiles-increase-backlight 3 # increase screen brightness
-bindsym XF86MonBrightnessDown exec dotfiles-decrease-backlight 3 # decrease screen brightness
-bindsym $mod+Shift+equal exec dotfiles-increase-backlight 3 # increase screen brightness
-bindsym $mod+Shift+minus exec dotfiles-decrease-backlight 3 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec dotfiles-increase-backlight 1 # increase screen brightness
+bindsym XF86MonBrightnessDown exec dotfiles-decrease-backlight 1 # decrease screen brightness
+bindsym $mod+Shift+equal exec dotfiles-increase-backlight 1 # increase screen brightness
+bindsym $mod+Shift+minus exec dotfiles-decrease-backlight 1 # decrease screen brightness
 
 # volume
 bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 2%+ && pkill -RTMIN+1 i3blocks
@@ -211,7 +211,7 @@ exec --no-startup-id "blueman-applet"
 exec --no-startup-id "nitrogen --restore"
 
 
-bindsym $mod+c+o "mpv ~/Music/Musak/National Anthem of USSR.wav" 
+bindsym $mod+c+o exec "mpv ~/Music/Musak/National Anthem of USSR.wav" 
 
 # For dual monitor config
 exec –no-startup-id xrandr –-output eDP-1-1 –-right-of DP-0 –-auto

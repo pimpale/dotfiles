@@ -70,7 +70,7 @@ let g:deoplete#sources#rust#racer_binary=Chomp(system('which racer'))
 let g:deoplete#sources#rust#rust_source_path=Chomp(system('realpath $(rustup run nightly rustc --print sysroot)/lib/rustlib/src/rust/src'))
 
 let g:rustfmt_autosave = 1
-let g:rustfmt_command = 'rustup run nightly rustfmt'
+let g:rustfmt_command = 'rustfmt'
 
 " clang config
 let g:deoplete#sources#clang#libclang_path = '/lib/libclang.so'

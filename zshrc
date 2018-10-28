@@ -107,5 +107,5 @@ alias wget-recursive-get="wget -r -nH --cut-dirs=2 --no-parent"
 
 #plan 9 is the superior operating system
 unalias 9
-export PLAN9="/opt/plan9"
+export PLAN9="/lib/plan9"
 export PATH=$PATH:$PLAN9/bin

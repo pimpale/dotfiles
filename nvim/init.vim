@@ -1,6 +1,4 @@
 set t_Co=256
-vind29
-:
 syntax on
 set mouse=a
 set number
@@ -28,8 +26,6 @@ func! DeleteTrailingWhitespace()
 endfunc
 
 command DeleteWhiteSpace execute DeleteTrailingWhitespace()
-
-cmap w!! w !su -c "tee > /dev/null %"
 
 let s:editor_root=expand('~/.nvim')
 

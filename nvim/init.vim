@@ -64,6 +64,16 @@ endif
 " deoplete config
 let g:deoplete#enable_at_startup = 1
 
+inoremap <silent><expr> <TAB>
+    \ pumvisible() ? "\<C-n>" :
+    \ <SID>check_back_space() ? "\<TAB>" :
+    \ deoplete#mappings#manual_complete()
+function! s:check_back_space() abort "{{{
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+endfunction"}}}
+
+
 " rust config
 let g:deoplete#sources#rust#racer_binary=Chomp(system('which racer'))
 let g:deoplete#sources#rust#rust_source_path=Chomp(system('realpath $(rustup run nightly rustc --print sysroot)/lib/rustlib/src/rust/src'))

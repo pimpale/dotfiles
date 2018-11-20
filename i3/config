@@ -35,7 +35,8 @@ bindsym $mod+Shift+Return exec terminator
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+x --release exec --no-startup-id xkill
 # start dmenu (a program launcher)
-bindsym $mod+space exec dmenu_run
+# bindsym $mod+space exec dmenu_run
+bindsym $mod+space exec	dotfiles-application-manager 
 
 bindsym $mod+Shift+c exec "gnome-screenshot -i"
 

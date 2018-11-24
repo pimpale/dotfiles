@@ -1,0 +1,4 @@
+#!/bin/sh
+#!/bin/sh
+
+echo -ne $@ | xsel -b -i 

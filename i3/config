@@ -34,9 +34,9 @@ bindsym $mod+Shift+Return exec terminator
 # kill focused window
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+x --release exec --no-startup-id xkill
-# start dmenu (a program launcher)
-# bindsym $mod+space exec dmenu_run
+# start a program launcher
 bindsym $mod+space exec	dotfiles-application-manager 
+bindsym $mod+Shift+space exec rofi -show window -lines 3 -eh 2 -bw 0 -width 100 -padding 400 -fullscreen;	
 
 bindsym $mod+Shift+c exec "gnome-screenshot -i"
 

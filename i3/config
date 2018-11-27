@@ -29,13 +29,13 @@ new_window 1pixel
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec st 
+bindsym $mod+Return exec termite 
 bindsym $mod+Shift+Return exec terminator
 # kill focused window
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+x --release exec --no-startup-id xkill
 # start a program launcher
-bindsym $mod+space exec	dmenu_run #dotfiles-application-manager 
+bindsym $mod+space exec	dotfiles-application-manager 
 bindsym $mod+Shift+space exec rofi -show window -lines 3 -eh 2 -bw 0 -width 100 -padding 400 -fullscreen;	
 
 bindsym $mod+Shift+c exec "gnome-screenshot -i"
@@ -208,7 +208,7 @@ bindsym $mod+m exec "/usr/local/bin/switch-audio-port"
 
 # Autostart apps
 exec amixer sset Master 0% && pkill -RTMIN+1 i3blocks
-exec --no-startup-id "compton -cCG"
+exec --no-startup-id "compton"
 exec --no-startup-id "nm-applet"
 exec --no-startup-id "blueman-applet"
 exec --no-startup-id "nitrogen --restore"

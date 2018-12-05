@@ -4,7 +4,7 @@ set mouse=a
 set number
 set hidden
 set showcmd
-set tabstop=4
+set tabstop=2
 colorscheme elflord
 
 if has('unnamedplus')

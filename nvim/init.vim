@@ -63,6 +63,10 @@ endif
 
 " deoplete config
 let g:deoplete#enable_at_startup = 1
+"
+" <TAB>: completion.
+inoremap <expr><CR>  pumvisible() ? "\<C-n>" : "\<CR>"
+
 
 inoremap <silent><expr> <TAB>
     \ pumvisible() ? "\<C-n>" :

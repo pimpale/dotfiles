@@ -1,5 +1,6 @@
 set t_Co=256
 syntax on
+filetype plugin indent on
 set mouse=a
 set number
 set hidden
@@ -13,7 +14,6 @@ else
 	set clipboard=unnamed
 endif
 
-filetype plugin indent on
 
 func! Chomp(string)
     return substitute(a:string, '\n\+$', '', '')

@@ -45,7 +45,7 @@ let &rtp = &rtp . ',' . s:editor_root . '/bundle/vundle/'
 call vundle#rc(s:editor_root . '/bundle')
 
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'vim-scripts/indentpython.vim'
@@ -53,6 +53,7 @@ Plugin 'Shougo/deoplete.nvim'
 Plugin 'rust-lang/rust.vim'
 Plugin 'sebastianmarkow/deoplete-rust'
 Plugin 'zchee/deoplete-clang'
+Plugin 'rhysd/vim-clang-format'
 Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'lambdalisue/suda.vim'
 
@@ -61,13 +62,14 @@ if vundle_installed == 0
 	:PluginInstall
 endif
 
+" syntastic config
+" let g:syntastic_c_include_dirs = [ '/usr/include/vulkan', '/usr/include/GLFW' ]
+" let g:syntastic_c_check_header = 1
+
 " deoplete config
 let g:deoplete#enable_at_startup = 1
-"
-" <TAB>: completion.
-inoremap <expr><CR>  pumvisible() ? "\<C-n>" : "\<CR>"
 
-
+" deoplete <TAB>: completion.
 inoremap <silent><expr> <TAB>
     \ pumvisible() ? "\<C-n>" :
     \ <SID>check_back_space() ? "\<TAB>" :
@@ -88,7 +90,6 @@ let g:rustfmt_command = 'rustfmt'
 " clang config
 let g:deoplete#sources#clang#libclang_path = '/lib/libclang.so'
 let g:deoplete#sources#clang#clang_header = '/lib/clang'
-
 
 " glorious readline
 cnoremap <C-a> <Home>

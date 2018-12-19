@@ -27,6 +27,7 @@ endfunc
 
 command DeleteWhiteSpace execute DeleteTrailingWhitespace()
 
+
 let s:editor_root=expand('~/.nvim')
 
 let vundle_installed=1
@@ -45,7 +46,8 @@ let &rtp = &rtp . ',' . s:editor_root . '/bundle/vundle/'
 call vundle#rc(s:editor_root . '/bundle')
 
 Plugin 'scrooloose/nerdtree'
-" Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-fugitive'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'vim-scripts/indentpython.vim'
@@ -61,6 +63,7 @@ if vundle_installed == 0
 	echo "installing"
 	:PluginInstall
 endif
+" clang-format config
 
 " syntastic config
 " let g:syntastic_c_include_dirs = [ '/usr/include/vulkan', '/usr/include/GLFW' ]

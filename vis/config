@@ -1,0 +1,5 @@
+audio.sources=pulse
+audio.stereo.enabled=false
+colors.scheme=rainbow
+colors.override.terminal=true
+colors.override=true

@@ -88,7 +88,7 @@ export PATH=$PATH:"$HOME/dotfiles/bin"
 alias wol-t4700="wol 66:66:66:66:66:66"
 
 # XTERM
-TERM=xterm
+export TERM=rxvt-256color
 
 #helpfulness
 alias rm="rm -i"

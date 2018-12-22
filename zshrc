@@ -70,6 +70,12 @@ else
 	source $ZSH/oh-my-zsh.sh
 fi
 
+# React Native
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 export PATH=$PATH:"$HOME/bin"
 export PATH=$PATH:"$HOME/.local/bin"
@@ -105,6 +111,7 @@ alias ks="ls"
 alias ls-a="ls -a"
 alias scd=cd
 alias "cd.."="cd .."
+alias mdkir=mkdir
 alias ,,=..
 alias wget-recursive-get="wget -r -nH --cut-dirs=2 --no-parent"
 

@@ -58,6 +58,7 @@ Plugin 'zchee/deoplete-clang'
 Plugin 'rhysd/vim-clang-format'
 Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'lambdalisue/suda.vim'
+Plugin 'beyondmarc/glsl.vim'
 
 if vundle_installed == 0
 	echo "installing"

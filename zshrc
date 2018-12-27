@@ -105,6 +105,7 @@ alias sduo=sudo
 alias sdudo=sudo
 alias sudi=sudo
 alias clea=clear
+alias nivm=nvim
 alias sl="ls"
 alias s="ls"
 alias ks="ls"

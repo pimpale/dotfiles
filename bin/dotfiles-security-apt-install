@@ -1,3 +1,3 @@
 #!/bin/sh
 
-sudo apt install ufw gufw auditd libpam-cracklib
+sudo apt install curl lsof realpath tree zsh ufw gufw auditd libpam-cracklib

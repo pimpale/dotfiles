@@ -86,7 +86,7 @@ endfunction"}}}
 
 " rust config
 let g:deoplete#sources#rust#racer_binary=Chomp(system('which racer'))
-let g:deoplete#sources#rust#rust_source_path=Chomp(system('realpath $(rustup run nightly rustc --print sysroot)/lib/rustlib/src/rust/src'))
+let g:deoplete#sources#rust#rust_source_path=Chomp(system('realpath $(rustup run stable rustc --print sysroot)/lib/rustlib/src/rust/src'))
 
 let g:rustfmt_autosave = 1
 let g:rustfmt_command = 'rustfmt'

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+getfattr -d -m - $1

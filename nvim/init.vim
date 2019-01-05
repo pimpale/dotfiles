@@ -6,6 +6,9 @@ set number
 set hidden
 set showcmd
 set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
 colorscheme elflord
 
 if has('unnamedplus')
@@ -51,6 +54,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'vim-scripts/indentpython.vim'
+Plugin 'Shougo/neoinclude.vim'
 Plugin 'Shougo/deoplete.nvim'
 Plugin 'rust-lang/rust.vim'
 Plugin 'sebastianmarkow/deoplete-rust'
@@ -67,9 +71,7 @@ endif
 " clang-format config
 
 " syntastic config
-" let g:syntastic_c_include_dirs = [ '/usr/include/vulkan', '/usr/include/GLFW' ]
-" let g:syntastic_c_check_header = 1
-
+let g:syntastic_c_check_header = 1
 " deoplete config
 let g:deoplete#enable_at_startup = 1
 
@@ -86,7 +88,7 @@ endfunction"}}}
 
 " rust config
 let g:deoplete#sources#rust#racer_binary=Chomp(system('which racer'))
-let g:deoplete#sources#rust#rust_source_path=Chomp(system('realpath $(rustup run stable rustc --print sysroot)/lib/rustlib/src/rust/src'))
+let g:deoplete#sources#rust#rust_source_path=Chomp(system('rustc --print sysroot')) . '/lib/rustlib/src/rust/src'
 
 let g:rustfmt_autosave = 1
 let g:rustfmt_command = 'rustfmt'
@@ -94,7 +96,7 @@ let g:rustfmt_command = 'rustfmt'
 " clang config
 let g:deoplete#sources#clang#libclang_path = '/lib/libclang.so'
 let g:deoplete#sources#clang#clang_header = '/lib/clang'
-
+let g:deoplete#sources#clang#flags = ['-x', 'c', '-Wall', '-Wpedantic', '-Weverything']
 " glorious readline
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>

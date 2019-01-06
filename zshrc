@@ -94,9 +94,10 @@ export PATH=$PATH:"$HOME/dotfiles/bin"
   alias wol-t4700="wol 66:66:66:66:66:66"
 
 # XTERM
-if [ $TERM="xterm-termite" ]; then 
-  export TERM=rxvt-256color
+if [ "$TERM" = "xterm-termite" ]; then 
+  export TERM="rxvt-256color"
 fi
+
 
 #helpfulness
 alias rm="rm -i"

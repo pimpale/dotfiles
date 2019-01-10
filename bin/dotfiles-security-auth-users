@@ -1,0 +1,22 @@
+#!/bin/python3
+
+# get sudo access
+def prompt_sudo():
+    ret = 0
+    if os.geteuid() != 0:
+        msg = "[sudo] password for %u:"
+        ret = subprocess.check_call("sudo -v -p '%s'" % msg, shell=True)
+    return ret
+
+# first get list of all users
+
+authuserlist = 
+
+
+# then delete those users who are not on the list
+
+# then get admin users
+
+# then deadmin users who are not on the list
+
+

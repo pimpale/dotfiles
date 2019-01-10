@@ -219,8 +219,3 @@ exec --no-startup-id "blueman-applet"
 exec --no-startup-id "nitrogen --restore"
 exec --no-startup-id "xss-lock -- i3lock -n -i ~/Pictures/lockscreen.png"
 exec --no-startup-id "termite -e 'cmatrix -b'"
-
-
-
-# For dual monitor config
-exec –no-startup-id xrandr –-output eDP-1-1 –-right-of DP-0 –-auto

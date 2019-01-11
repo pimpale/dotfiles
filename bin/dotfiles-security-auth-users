@@ -1,5 +1,24 @@
 #!/bin/python3
 
+import os
+
+def read_passwd(): 
+    userlist = []
+    with open("/etc/passwd", "r") as passwd:
+        for line in passwd:
+            userlist.append(line.split(":")[0])
+
+    return userlist
+
+def prompt_auth_users():
+    userlist = []
+    while(True):
+        inp = input("Enter authorized user, or \"break\" to exit: ")
+        if inp == "break":
+           break
+        authuserlist.append(inp)
+    return userlist
+
 # get sudo access
 def prompt_sudo():
     ret = 0
@@ -8,11 +27,18 @@ def prompt_sudo():
         ret = subprocess.check_call("sudo -v -p '%s'" % msg, shell=True)
     return ret
 
-# first get list of all users
+def users_to_delete(
 
-authuserlist = 
+authuserlist = prompt_auth_users()
+actualuserlist = read_passwd()
 
 
+
+
+
+
+    
+    
 # then delete those users who are not on the list
 
 # then get admin users

@@ -1,3 +1,4 @@
 #!/bin/sh
 
-cat /etc/passwd | grep -v "nologin"
+cat /etc/passwd | grep -v "nologin" | grep -v "false"
+

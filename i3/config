@@ -149,8 +149,6 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-bindsym $mod+b bar mode dock
-bindsym $mod+Shift+b bar mode invisible
 
 set $bg-color            #36393f
 set $inactive-bg-color   #36393f
@@ -169,8 +167,12 @@ client.urgent           $urgent-bg-color   $urgent-bg-color   $text-color       
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
+# Toggle between dock mode and hide mode
+bindsym $mod+b bar mode toggle
+
 bar {
-	mode invisible
+  mode invisible 
+  modifier none
 	i3bar_command i3bar -t
 	status_command i3status
 	position top

@@ -63,12 +63,14 @@ Plugin 'rhysd/vim-clang-format'
 Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'lambdalisue/suda.vim'
 Plugin 'beyondmarc/glsl.vim'
+Plugin 'airblade/vim-rooter'
 
 if vundle_installed == 0
 	echo "installing"
 	:PluginInstall
 endif
-" clang-format config
+" javacomplete2 config
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
 " syntastic config
 let g:syntastic_c_check_header = 1

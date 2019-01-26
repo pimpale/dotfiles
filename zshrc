@@ -101,7 +101,7 @@ fi
 
 #when on ubuntu
 if grep -q ubuntu /etc/os-release; then
-  alias pacman=pacapt
+  alias pacman="sudo pacapt"
 fi
 
 #helpfulness

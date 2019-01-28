@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ -x $(which termite) ]; then
+  exec termite
+fi
+
+exec i3-sensible-terminal

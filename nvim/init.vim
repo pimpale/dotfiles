@@ -111,3 +111,9 @@ cnoremap <M-f> <S-Right>
 
 " save me from terminal mode
 " tnoremap <Esc> <C-\><C-n>
+
+
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>

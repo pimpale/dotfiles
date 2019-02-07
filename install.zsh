@@ -6,6 +6,7 @@ pwd="$HOME/dotfiles"
 mkdir "$HOME/.config"
 
 ln -s $opts "$pwd/zshrc" "$HOME/.zshrc"
+ln -s $opts "$pwd/xonshrc" "$HOME/.xonshrc"
 ln -s $opts "$pwd/nvim" "$HOME/.config"
 ln -s $opts "$pwd/htop" "$HOME/.config"
 ln -s $opts "$pwd/i3" "$HOME/.config"

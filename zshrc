@@ -81,6 +81,11 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:"$HOME/bin"
 export PATH=$PATH:"$HOME/.local/bin"
 
+# virtualenv
+export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+source virtualenvwrapper.sh
+
 #My favorites
 export VISUAL="nvim"
 export EDITOR="nvim"

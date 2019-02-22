@@ -49,6 +49,7 @@ let &rtp = &rtp . ',' . s:editor_root . '/bundle/vundle/'
 call vundle#rc(s:editor_root . '/bundle')
 
 Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-abolish'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'pangloss/vim-javascript'

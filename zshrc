@@ -82,9 +82,11 @@ export PATH=$PATH:"$HOME/bin"
 export PATH=$PATH:"$HOME/.local/bin"
 
 # virtualenv
-export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-source virtualenvwrapper.sh
+if [ -x $(which virtualenvwrapper.sh) ]; then 
+  export WORKON_HOME=$HOME/.virtualenvs
+  export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+  source virtualenvwrapper.sh
+fi
 
 #My favorites
 export VISUAL="nvim"

@@ -82,7 +82,7 @@ export PATH=$PATH:"$HOME/bin"
 export PATH=$PATH:"$HOME/.local/bin"
 
 # virtualenv
-if [ -x $(which virtualenvwrapper.sh) ]; then 
+if hash virtualenvwrapper.sh 2> /dev/null; then 
   export WORKON_HOME=$HOME/.virtualenvs
   export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
   source virtualenvwrapper.sh

@@ -66,6 +66,7 @@ Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'lambdalisue/suda.vim'
 Plugin 'beyondmarc/glsl.vim'
 Plugin 'airblade/vim-rooter'
+Plugin 'lervag/vimtex'
 
 if vundle_installed == 0
 	echo "installing"

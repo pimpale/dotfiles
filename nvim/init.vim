@@ -67,6 +67,7 @@ Plugin 'lambdalisue/suda.vim'
 Plugin 'beyondmarc/glsl.vim'
 Plugin 'airblade/vim-rooter'
 Plugin 'lervag/vimtex'
+Plugin 'terryma/vim-multiple-cursors'
 
 if vundle_installed == 0
 	echo "installing"
@@ -102,12 +103,19 @@ let g:rustfmt_command = 'rustfmt'
 let g:deoplete#sources#clang#libclang_path = '/lib/libclang.so'
 let g:deoplete#sources#clang#clang_header = '/lib/clang'
 let g:deoplete#sources#clang#flags = ['-x', 'c', '-Wall', '-Wpedantic', '-Weverything']
+
+" command line
+
+command W w
+command Wa wa
+
 " glorious readline
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 cnoremap <C-b> <Left>
+cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
 cnoremap <C-f> <Right>
 cnoremap <M-b> <S-Left>
 cnoremap <M-f> <S-Right>

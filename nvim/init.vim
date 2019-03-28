@@ -68,6 +68,7 @@ Plugin 'beyondmarc/glsl.vim'
 Plugin 'airblade/vim-rooter'
 Plugin 'lervag/vimtex'
 Plugin 'terryma/vim-multiple-cursors'
+Plugin 'jceb/vim-orgmode'
 
 if vundle_installed == 0
 	echo "installing"

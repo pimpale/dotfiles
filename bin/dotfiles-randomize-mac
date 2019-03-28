@@ -6,5 +6,7 @@ then
 		ip link set $1 down
 		macchanger -b -r $1
 		ip link set $1 up
+else
+    echo make sure to add the device name
 fi
 

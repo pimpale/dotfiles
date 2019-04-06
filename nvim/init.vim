@@ -79,6 +79,8 @@ autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
 " syntastic config
 let g:syntastic_c_check_header = 1
+let g:syntastic_always_populate_loc_list = 1
+
 " deoplete config
 let g:deoplete#enable_at_startup = 1
 

@@ -111,6 +111,8 @@ let g:deoplete#sources#clang#flags = ['-x', 'c', '-Wall', '-Wpedantic', '-Wevery
 
 command W w
 command Wa wa
+command Wq wq
+command Q q
 
 " glorious readline
 cnoremap <C-a> <Home>

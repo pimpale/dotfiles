@@ -79,6 +79,7 @@ export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 export PATH=$PATH:"$HOME/bin"
+export PATH=$PATH:"$HOME/compilers/bin"
 export PATH=$PATH:"$HOME/.local/bin"
 
 # virtualenv

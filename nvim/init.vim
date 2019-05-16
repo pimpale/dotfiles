@@ -114,6 +114,9 @@ command W w
 command Wa wa
 command Wq wq
 command Q q
+command Qa qa
+command Split split
+command Vsplit vsplit
 
 " glorious readline
 cnoremap <C-a> <Home>

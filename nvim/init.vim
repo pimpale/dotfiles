@@ -78,6 +78,9 @@ endif
 " javacomplete2 config
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
+" asm config
+let g:asmsyntax = 'nasm'
+
 " syntastic config
 let g:syntastic_c_check_header = 1
 let g:syntastic_always_populate_loc_list = 1

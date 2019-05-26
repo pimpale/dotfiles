@@ -75,6 +75,10 @@ if vundle_installed == 0
 	echo "installing"
 	:PluginInstall
 endif
+
+"suda config
+let g:suda_smart_edit = 1
+
 " javacomplete2 config
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 

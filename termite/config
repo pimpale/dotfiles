@@ -1,6 +1,6 @@
 
 [options]
-font = xos4 Terminus 16px
+font = xos4 Terminus 18px
 scrollback_lines = 10000
 
 [colors]

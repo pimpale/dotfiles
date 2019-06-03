@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:xos4 Terminus 16px
+font pango:xos4 Terminus 20px
 
 # thin borders
 hide_edge_borders both
@@ -188,10 +188,10 @@ for_window [class="Pavucontrol"] floating enable
 # Multimedia Keys
 
 
-bindsym XF86MonBrightnessUp exec dotfiles-increase-backlight 1 # increase screen brightness
-bindsym XF86MonBrightnessDown exec dotfiles-decrease-backlight 1 # decrease screen brightness
-bindsym $mod+Shift+equal exec dotfiles-increase-backlight 1 # increase screen brightness
-bindsym $mod+Shift+minus exec dotfiles-decrease-backlight 1 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec dotfiles-increase-backlight 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec dotfiles-decrease-backlight 5 # decrease screen brightness
+bindsym $mod+Shift+equal exec dotfiles-increase-backlight 5 # increase screen brightness
+bindsym $mod+Shift+minus exec dotfiles-decrease-backlight 5 # decrease screen brightness
 
 # volume
 bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 2%+ && pkill -RTMIN+1 i3blocks

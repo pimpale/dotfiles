@@ -1,9 +1,0 @@
-# XONSH WIZARD START
-$AUTO_CD = '1'
-$AUTO_PUSHD = '1'
-$AUTO_SUGGEST = '1'
-$AUTO_SUGGEST_IN_COMPLETIONS = '1'
-$DOTGLOB = '1'
-$MOUSE_SUPPORT = '1'
-xontrib load autoxsh bashisms base16_shell docker_tabcomplete jedi mpl prompt_ret_code scrapy_tabcomplete powerline click_tabcomplete fzf-widgets
-# XONSH WIZARD END

@@ -184,6 +184,7 @@ bar {
 
 # floating windows
 for_window [class="Pavucontrol"] floating enable
+for_window [class="Qemu-system-x86_64"] floating enable
 
 # Multimedia Keys
 

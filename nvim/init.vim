@@ -4,6 +4,7 @@ filetype plugin indent on
 set mouse=a
 set number
 set hidden
+set list
 set showcmd
 set tabstop=2
 set shiftwidth=2

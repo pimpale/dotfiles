@@ -51,7 +51,7 @@ call vundle#rc(s:editor_root . '/bundle')
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-abolish'
 Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'vim-scripts/indentpython.vim'
@@ -69,14 +69,22 @@ Plugin 'airblade/vim-rooter'
 Plugin 'lervag/vimtex'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'jceb/vim-orgmode'
-Plugin 'philj56/vim-asm-indent'
+Plugin 'Shirk/vim-gas'
+Plugin 'junegunn/vim-easy-align'
 
 if vundle_installed == 0
 	echo "installing"
 	:PluginInstall
 endif
 
-"suda config
+" easy align config
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+" suda config
 let g:suda_smart_edit = 1
 
 " javacomplete2 config

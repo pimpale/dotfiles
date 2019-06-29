@@ -94,6 +94,9 @@ autocmd FileType java setlocal omnifunc=javacomplete#Complete
 " asm config
 let g:asmsyntax = 'nasm'
 
+" NERDtree config
+cmap ne NERDTreeToggle
+
 " syntastic config
 let g:syntastic_c_check_header = 1
 let g:syntastic_always_populate_loc_list = 1
@@ -144,10 +147,6 @@ cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
 cnoremap <C-f> <Right>
 cnoremap <M-b> <S-Left>
 cnoremap <M-f> <S-Right>
-
-" save me from terminal mode
-" tnoremap <Esc> <C-\><C-n>
-
 
 noremap <Up> <NOP>
 noremap <Down> <NOP>

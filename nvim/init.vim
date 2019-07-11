@@ -13,24 +13,14 @@ set expandtab
 colorscheme elflord
 
 if has('unnamedplus')
-	set clipboard=unnamedplus
+  set clipboard=unnamedplus
 else
-	set clipboard=unnamed
+  set clipboard=unnamed
 endif
 
-
 func! Chomp(string)
-    return substitute(a:string, '\n\+$', '', '')
+  return substitute(a:string, '\n\+$', '', '')
 endfunc
-
-func! DeleteTrailingWhitespace()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
-endfunc
-
-command DeleteWhiteSpace execute DeleteTrailingWhitespace()
-
 
 let s:editor_root=expand('~/.nvim')
 
@@ -38,12 +28,12 @@ let vundle_installed=1
 let vundle_readme=s:editor_root . '/bundle/vundle/README.md'
 
 if !filereadable(vundle_readme)
-	echo "Installing Vundle.."
-	echo ""
-	" silent execute "! mkdir -p ~/." . s:editor_path_name . "/bundle"
-	silent call mkdir(s:editor_root . '/bundle', "p")
-	silent execute "!git clone https://github.com/gmarik/vundle " . s:editor_root . "/bundle/vundle"
-	let vundle_installed=0
+  echo "Installing Vundle.."
+  echo ""
+  " silent execute "! mkdir -p ~/." . s:editor_path_name . "/bundle"
+  silent call mkdir(s:editor_root . '/bundle', "p")
+  silent execute "!git clone https://github.com/gmarik/vundle " . s:editor_root . "/bundle/vundle"
+  let vundle_installed=0
 endif
 
 let &rtp = &rtp . ',' . s:editor_root . '/bundle/vundle/'
@@ -74,8 +64,8 @@ Plugin 'Shirk/vim-gas'
 Plugin 'junegunn/vim-easy-align'
 
 if vundle_installed == 0
-	echo "installing"
-	:PluginInstall
+  echo "installing"
+  :PluginInstall
 endif
 
 " easy align config
@@ -95,7 +85,7 @@ autocmd FileType java setlocal omnifunc=javacomplete#Complete
 let g:asmsyntax = 'nasm'
 
 " NERDtree config
-cmap ne NERDTreeToggle
+command Ntt NERDTreeToggle
 
 " syntastic config
 let g:syntastic_c_check_header = 1
@@ -152,3 +142,29 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
+
+
+
+func! DeleteTrailingWhitespace()
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
+endfunc
+
+command DeleteWhiteSpace execute DeleteTrailingWhitespace()
+
+command LeftSplit normal <C-w><Left>
+command RightSplit normal <C-w><Right>
+command UpSplit normal <C-w><Up>
+command DownSplit normal <C-w><Down>
+
+func Ide()
+  :NERDTreeToggle
+  :RightSplit
+  :split
+  :DownSplit
+  :term
+  :UpSplit
+endfunc
+
+command Ide execute Ide()

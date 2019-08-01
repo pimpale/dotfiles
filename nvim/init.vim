@@ -166,6 +166,8 @@ func Ide()
   :split
   :DownSplit
   :term
+  :vsplit
+  :term
   :UpSplit
 endfunc
 

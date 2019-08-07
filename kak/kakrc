@@ -1,0 +1,43 @@
+
+# set colorscheme
+colorscheme gruvbox
+
+# highlighters
+add-highlighter global/ number-lines
+add-highlighter global/ show-matching
+add-highlighter global/ show-whitespaces
+
+# global options
+set global ui_options ncurses_assistant=off
+
+# if not configured per file type, set tabs as 4 spaces
+set global tabstop 4
+
+# insert 4 spaces on tab key
+hook global InsertChar \t %{ exec -draft -itersel h@ } -group kakrc-replace-tabs-with-spaces
+
+# Install kak plugs
+evaluate-commands %sh{
+    # kak plugin directory
+    PLUGIN_DIRECTORY="$HOME/.kakplugins"
+    KAK_PLUG="$PLUGIN_DIRECTORY/plug.kak/rc/plug.kak"
+
+    # if does not exist, create it and git clone kak plug
+    if [ -f $KAK_PLUG ]; then
+        echo source $KAK_PLUG
+    else
+        mkdir -p $PLUGIN_DIRECTORY
+        echo echo "installing plugins..."
+        git clone "https://github.com/andreyorst/plug.kak" "$PLUGIN/plug.kak" > /dev/null 2>&1
+        GIT_RET_CODE=$?
+        if [ "$GIT_RET_CODE" -eq "0" ]; then
+            echo echo "kak.plug installed successfully"
+            echo source $KAK_PLUG
+        else
+            echo echo "failed to install kak.plug"
+        fi
+    fi
+}
+
+plug "https://github.com/Delapouite/kakoune-text-objects"
+

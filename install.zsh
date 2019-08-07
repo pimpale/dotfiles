@@ -7,6 +7,7 @@ mkdir "$HOME/.config"
 
 ln -s $opts "$pwd/zshrc" "$HOME/.zshrc"
 ln -s $opts "$pwd/nvim" "$HOME/.config"
+ln -s $opts "$pwd/kak" "$HOME/.config"
 ln -s $opts "$pwd/i3" "$HOME/.config"
 ln -s $opts "$pwd/i3status" "$HOME/.config"
 ln -s $opts "$pwd/zathura" "$HOME/.config"

@@ -42,6 +42,7 @@ call vundle#rc(s:editor_root . '/bundle')
 Plugin 'airblade/vim-rooter'
 Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'beyondmarc/glsl.vim'
+Plugin 'dart-lang/dart-vim-plugin'
 Plugin 'guns/vim-clojure-static'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'lambdalisue/suda.vim'
@@ -95,6 +96,10 @@ let g:syntastic_always_populate_loc_list = 1
 
 " deoplete config
 let g:deoplete#enable_at_startup = 1
+
+" dart config
+let dart_html_in_string=v:true
+let dart_format_on_save = 1
 
 " deoplete <TAB>: completion.
 inoremap <silent><expr> <TAB>

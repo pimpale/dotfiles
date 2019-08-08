@@ -28,7 +28,7 @@ evaluate-commands %sh{
     else
         mkdir -p $PLUGIN_DIRECTORY
         echo echo "installing plugins..."
-        git clone "https://github.com/andreyorst/plug.kak" "$PLUGIN/plug.kak" > /dev/null 2>&1
+        git clone "https://github.com/andreyorst/plug.kak" "$PLUGIN_DIRECTORY/plug.kak" > /dev/null 
         GIT_RET_CODE=$?
         if [ "$GIT_RET_CODE" -eq "0" ]; then
             echo echo "kak.plug installed successfully"

@@ -40,7 +40,6 @@ let &rtp = &rtp . ',' . s:editor_root . '/bundle/vundle/'
 call vundle#rc(s:editor_root . '/bundle')
 
 Plugin 'airblade/vim-rooter'
-Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'beyondmarc/glsl.vim'
 Plugin 'dart-lang/dart-vim-plugin'
 Plugin 'guns/vim-clojure-static'

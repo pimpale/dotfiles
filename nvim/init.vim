@@ -68,7 +68,6 @@ Plugin 'zchee/deoplete-jedi'
 if vundle_installed == 0
   echo "installing"
   :PluginInstall
-  :UpdateRemotePlugins
 endif
 
 " easy align config

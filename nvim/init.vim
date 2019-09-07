@@ -28,7 +28,7 @@ let vundle_installed=1
 let vundle_readme=s:editor_root . '/bundle/vundle/README.md'
 
 if !filereadable(vundle_readme)
-  echo "Installing Vundle.."
+  echo "Installing Vundle..."
   echo ""
   " silent execute "! mkdir -p ~/." . s:editor_path_name . "/bundle"
   silent call mkdir(s:editor_root . '/bundle', "p")
@@ -68,6 +68,7 @@ Plugin 'zchee/deoplete-jedi'
 if vundle_installed == 0
   echo "installing"
   :PluginInstall
+  :UpdateRemotePlugins
 endif
 
 " easy align config
@@ -80,9 +81,6 @@ nmap ga <Plug>(EasyAlign)
 " suda config
 let g:suda_smart_edit = 1
 
-" javacomplete2 config
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
-
 " asm config
 let g:asmsyntax = 'nasm'
 
@@ -92,6 +90,7 @@ command Ntt NERDTreeToggle
 " syntastic config
 let g:syntastic_c_check_header = 1
 let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_java_javac_config_file_enabled = 1
 
 " deoplete config
 let g:deoplete#enable_at_startup = 1
@@ -143,13 +142,6 @@ cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
 cnoremap <C-f> <Right>
 cnoremap <M-b> <S-Left>
 cnoremap <M-f> <S-Right>
-
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
-
-
 
 func! DeleteTrailingWhitespace()
   exe "normal mz"

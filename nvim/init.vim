@@ -123,7 +123,6 @@ let g:deoplete#sources#clang#flags = ['-x', 'c', '-Wall', '-Wpedantic', '-Wevery
 
 " command line
 
-command W w
 command Wa wa
 command Wq wq
 command Q q

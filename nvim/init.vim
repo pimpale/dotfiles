@@ -68,7 +68,6 @@ Plugin 'zchee/deoplete-jedi'
 if vundle_installed == 0
   echo "installing"
   :PluginInstall
-  :UpdateRemotePlugins
 endif
 
 " easy align config
@@ -124,7 +123,6 @@ let g:deoplete#sources#clang#flags = ['-x', 'c', '-Wall', '-Wpedantic', '-Wevery
 
 " command line
 
-command W w
 command Wa wa
 command Wq wq
 command Q q

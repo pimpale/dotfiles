@@ -1,5 +1,5 @@
-if [ -x $(which light) ]; then
-	light -U $1
-else
+if [ -x $(which xbacklight) ]; then
 	xbacklight -dec $1
+else
+	light -U $1
 fi

@@ -150,6 +150,17 @@ endfunc
 
 command DeleteWhiteSpace execute DeleteTrailingWhitespace()
 
+" Movement
+nnoremap <A-h> <C-w><Left>
+nnoremap <A-j> <C-w><Up>
+nnoremap <A-k> <C-w><Down>
+nnoremap <A-l> <C-w><Right>
+
+nnoremap <A-Left> <C-w><Left>
+nnoremap <A-Up> <C-w><Up>
+nnoremap <A-Down> <C-w><Down>
+nnoremap <A-Right> <C-w><Right>
+
 command LeftSplit normal <C-w><Left>
 command RightSplit normal <C-w><Right>
 command UpSplit normal <C-w><Up>

@@ -1,5 +1,5 @@
 #!/bin/sh
-cat << EOF > /tmp/pam.d/common-password
+cat << EOF > /etc/pam.d/common-password
 #
 # /etc/pam.d/common-auth - authentication settings common to all services
 #

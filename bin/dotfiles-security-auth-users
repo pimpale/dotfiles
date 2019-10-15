@@ -1,14 +1,8 @@
 #!/bin/python3
 
 import os
-
-def read_passwd(): 
-    userlist = []
-    with open("/etc/passwd", "r") as passwd:
-        for line in passwd:
-            userlist.append(line.split(":")[0])
-
-    return userlist
+import sys
+import spwd
 
 def prompt_auth_users():
     userlist = []
@@ -19,30 +13,28 @@ def prompt_auth_users():
         authuserlist.append(inp)
     return userlist
 
-# get sudo access
-def prompt_sudo():
-    ret = 0
-    if os.geteuid() != 0:
-        msg = "[sudo] password for %u:"
-        ret = subprocess.check_call("sudo -v -p '%s'" % msg, shell=True)
-    return ret
+# List usernames of all users who do have passwords
+def get_real_users():
+    return list(map(lambda user : user.sp_nam,
+                    filter(lambda user : len(user.sp_pwd) > 3, spwd.getspall())))
 
-def users_to_delete(
 
-authuserlist = prompt_auth_users()
-actualuserlist = read_passwd()
+def users_to_delete(authusers):
+    return list(set(currentusers) - set(authusers))
 
 
 
+# First bail if not sudo
+
+if os.geteuid != 0:
+    print('Please run this script as root.')
+    sys.exit(1)
 
 
+authusers = prompt_auth_users()
+currentusers = get_real_users()
 
-    
-    
-# then delete those users who are not on the list
+users_to_delete = list(set(currentusers) - set(authusers))
 
-# then get admin users
-
-# then deadmin users who are not on the list
-
-
+for user in users_to_delete:
+    os.system(f'userdel -rf {user}')

@@ -22,7 +22,7 @@ auth	requisite			pam_deny.so
 # prime the stack with a positive return value if there isn't one already;
 # this avoids us returning an error just because nothing sets a success code
 # since the modules above will each just jump around
-auth  required      pam_tally2.so  deny=5 even_deny_root unlock_time=1200
+auth  required      pam_tally2.so  deny=5 even_deny_root unlock_time=1800 onerr=fail
 auth	required			pam_permit.so
 # and here are more per-package modules (the "Additional" block)
 auth	optional			pam_cap.so 

@@ -28,7 +28,7 @@ let vundle_installed=1
 let vundle_readme=s:editor_root . '/bundle/vundle/README.md'
 
 if !filereadable(vundle_readme)
-  echo "Installing Vundle.."
+  echo "Installing Vundle..."
   echo ""
   " silent execute "! mkdir -p ~/." . s:editor_path_name . "/bundle"
   silent call mkdir(s:editor_root . '/bundle', "p")
@@ -56,6 +56,7 @@ Plugin 'sebastianmarkow/deoplete-rust'
 Plugin 'shirk/vim-gas'
 Plugin 'shougo/deoplete.nvim'
 Plugin 'shougo/neoinclude.vim'
+Plugin 'sirtaj/vim-openscad'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-eunuch'
@@ -80,9 +81,6 @@ nmap ga <Plug>(EasyAlign)
 " suda config
 let g:suda_smart_edit = 1
 
-" javacomplete2 config
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
-
 " asm config
 let g:asmsyntax = 'nasm'
 
@@ -92,6 +90,7 @@ command Ntt NERDTreeToggle
 " syntastic config
 let g:syntastic_c_check_header = 1
 let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_java_javac_config_file_enabled = 1
 
 " deoplete config
 let g:deoplete#enable_at_startup = 1
@@ -125,7 +124,6 @@ let g:deoplete#sources#clang#flags = ['-x', 'c', '-Wall', '-Wpedantic', '-Wevery
 
 " command line
 
-command W w
 command Wa wa
 command Wq wq
 command Q q
@@ -144,13 +142,6 @@ cnoremap <C-f> <Right>
 cnoremap <M-b> <S-Left>
 cnoremap <M-f> <S-Right>
 
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
-
-
-
 func! DeleteTrailingWhitespace()
   exe "normal mz"
   %s/\s\+$//ge
@@ -158,6 +149,17 @@ func! DeleteTrailingWhitespace()
 endfunc
 
 command DeleteWhiteSpace execute DeleteTrailingWhitespace()
+
+" Movement
+nnoremap <A-h> <C-w><Left>
+nnoremap <A-j> <C-w><Up>
+nnoremap <A-k> <C-w><Down>
+nnoremap <A-l> <C-w><Right>
+
+nnoremap <A-Left> <C-w><Left>
+nnoremap <A-Up> <C-w><Up>
+nnoremap <A-Down> <C-w><Down>
+nnoremap <A-Right> <C-w><Right>
 
 command LeftSplit normal <C-w><Left>
 command RightSplit normal <C-w><Right>

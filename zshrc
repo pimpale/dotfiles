@@ -143,4 +143,3 @@ unalias 9
 export PLAN9="/lib/plan9"
 export PATH=$PATH:$PLAN9/bin
 [ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
-[ -f /opt/OpenFOAM/OpenFOAM-7/etc/bashrc ] && source /opt/OpenFOAM/OpenFOAM-7/etc/bashrc

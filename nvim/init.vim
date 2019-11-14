@@ -161,6 +161,11 @@ nnoremap <A-Up> <C-w><Up>
 nnoremap <A-Down> <C-w><Down>
 nnoremap <A-Right> <C-w><Right>
 
+tnoremap <A-Left> <C-\><C-n><C-w><Left>
+tnoremap <A-Up> <C-\><C-n><C-w><Up>
+tnoremap <A-Down> <C-\><C-n><C-w><Down>
+tnoremap <A-Right> <C-\><C-n><C-w><Right>
+
 command LeftSplit normal <C-w><Left>
 command RightSplit normal <C-w><Right>
 command UpSplit normal <C-w><Up>

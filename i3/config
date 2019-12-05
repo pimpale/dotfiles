@@ -100,7 +100,7 @@ bindsym $mod+k workspace next
 bindsym $mod+j workspace prev
 
 # switch workspaces monitor arrow keys
-bindsym $mod+Shift+m exec "xrandr --output eDP-1-1 --left-of DP-0"
+bindsym $mod+Shift+m exec "arandr"
 bindsym $mod+Shift+k move workspace to output right
 bindsym $mod+Shift+j move workspace to output left
 

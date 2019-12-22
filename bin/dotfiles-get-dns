@@ -1,0 +1,6 @@
+#!/bin/python
+import subprocess
+
+for line in subprocess.run(['dig'], capture_output=True).stdout.split(b'\n'):
+    if line[3:9] == b'SERVER':
+        print('nameserver ' + line[12:].split(b'#')[0].decode())

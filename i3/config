@@ -217,6 +217,7 @@ bindsym $mod+m exec "/usr/local/bin/switch-audio-port"
 # Autostart apps
 exec amixer sset Master 0% && pkill -RTMIN+1 i3blocks
 exec --no-startup-id "compton"
+exec --no-startup-id "dunst"
 exec --no-startup-id "nm-applet"
 exec --no-startup-id "blueman-applet"
 exec --no-startup-id "nitrogen --restore"

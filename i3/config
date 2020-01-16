@@ -43,7 +43,7 @@ bindsym $mod+Shift+c exec "gnome-screenshot -i"
 
 # App shortcuts
 bindsym $mod+Shift+w exec "firefox"
-bindsym $mod+w exec "surf"
+bindsym $mod+w exec "brave"
 
 # move focus:
 bindsym $mod+Left focus left

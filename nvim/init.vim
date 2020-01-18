@@ -40,9 +40,7 @@ let &rtp = &rtp . ',' . s:editor_root . '/bundle/vundle/'
 call vundle#rc(s:editor_root . '/bundle')
 
 Plugin 'airblade/vim-rooter'
-Plugin 'beyondmarc/glsl.vim'
-Plugin 'dart-lang/dart-vim-plugin'
-Plugin 'guns/vim-clojure-static'
+Plugin 'dense-analysis/ale'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'lambdalisue/suda.vim'
 Plugin 'lervag/vimtex'
@@ -51,18 +49,14 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'rhysd/vim-clang-format'
 Plugin 'rust-lang/rust.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
 Plugin 'sebastianmarkow/deoplete-rust'
-Plugin 'shirk/vim-gas'
 Plugin 'shougo/deoplete.nvim'
 Plugin 'shougo/neoinclude.vim'
-Plugin 'sirtaj/vim-openscad'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-fireplace'
 Plugin 'tpope/vim-surround'
-Plugin 'vim-scripts/indentpython.vim'
 Plugin 'zchee/deoplete-clang'
 Plugin 'zchee/deoplete-jedi'
 
@@ -81,34 +75,24 @@ nmap ga <Plug>(EasyAlign)
 " suda config
 let g:suda_smart_edit = 1
 
-" asm config
-let g:asmsyntax = 'nasm'
 
 " NERDtree config
 command Ntt NERDTreeToggle
 
-" syntastic config
-let g:syntastic_c_check_header = 1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_java_javac_config_file_enabled = 1
 
 " deoplete config
 let g:deoplete#enable_at_startup = 1
 
-" dart config
-let dart_html_in_string=v:true
-let dart_format_on_save = 1
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
-" deoplete <TAB>: completion.
-inoremap <silent><expr> <TAB>
-    \ pumvisible() ? "\<C-n>" :
-    \ <SID>check_back_space() ? "\<TAB>" :
-    \ deoplete#mappings#manual_complete()
-function! s:check_back_space() abort "{{{
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~ '\s'
-endfunction"}}}
 
+" vimtex config
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
 
 " rust config
 let g:deoplete#sources#rust#racer_binary=Chomp(system('which racer'))

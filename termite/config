@@ -5,6 +5,6 @@ scrollback_lines = 10000
 
 [colors]
 foreground = #ffffff
-#background  = #36393f
+background  = #000000
 
-background = rgba(54, 57, 63, 0.8)
+#background = rgba(54, 57, 63, 0.8)

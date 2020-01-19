@@ -52,6 +52,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'sebastianmarkow/deoplete-rust'
 Plugin 'shougo/deoplete.nvim'
 Plugin 'shougo/neoinclude.vim'
+Plugin 'sirver/ultisnips'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-eunuch'
@@ -90,9 +91,6 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " vimtex config
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
-let g:vimtex_quickfix_mode=0
-set conceallevel=1
-let g:tex_conceal='abdmg'
 
 " rust config
 let g:deoplete#sources#rust#racer_binary=Chomp(system('which racer'))

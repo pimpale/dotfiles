@@ -1,23 +1,3 @@
-set t_Co=256
-syntax on
-filetype plugin indent on
-set mouse=a
-set number
-set hidden
-set list
-set showcmd
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set expandtab
-colorscheme elflord
-
-if has('unnamedplus')
-  set clipboard=unnamedplus
-else
-  set clipboard=unnamed
-endif
-
 " Bootstrap Installation of Plug Vim
 let plug_install = 0
 let autoload_plug_path = expand('~/.nvim/autoload/plug.vim')
@@ -35,11 +15,9 @@ Plug 'airblade/vim-rooter'
 Plug 'junegunn/vim-easy-align'
 Plug 'lambdalisue/suda.vim'
 Plug 'lervag/vimtex'
-Plug 'mxw/vim-jsx'
+Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'pangloss/vim-javascript'
 Plug 'scrooloose/nerdtree'
-Plug 'sirver/ultisnips'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-eunuch'
@@ -53,15 +31,95 @@ if plug_install
 endif
 unlet plug_install
 
+set t_Co=256
+syntax on
+filetype plugin indent on
+set mouse=a
+set number
+set hidden
+set list
+set showcmd
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+set background=dark
+colorscheme gruvbox
+
+if has('unnamedplus')
+  set clipboard=unnamedplus
+else
+  set clipboard=unnamed
+endif
+
+" command line
+command Wa wa
+command Wq wq
+command Q q
+command Qa qa
+command Split split
+command Vsplit vsplit
+command Term term
+
+" glorious readline
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+cnoremap <C-b> <Left>
+cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
+cnoremap <C-f> <Right>
+cnoremap <M-b> <S-Left>
+cnoremap <M-f> <S-Right>
+
+" Movement
+nnoremap <A-h> <C-w><Left>
+nnoremap <A-j> <C-w><Up>
+nnoremap <A-k> <C-w><Down>
+nnoremap <A-l> <C-w><Right>
+
+nnoremap <A-Left> <C-w><Left>
+nnoremap <A-Up> <C-w><Up>
+nnoremap <A-Down> <C-w><Down>
+nnoremap <A-Right> <C-w><Right>
+
+tnoremap <A-Left> <C-\><C-n><C-w><Left>
+tnoremap <A-Up> <C-\><C-n><C-w><Up>
+tnoremap <A-Down> <C-\><C-n><C-w><Down>
+tnoremap <A-Right> <C-\><C-n><C-w><Right>
+
+command LeftSplit normal <C-w><Left>
+command RightSplit normal <C-w><Right>
+command UpSplit normal <C-w><Up>
+command DownSplit normal <C-w><Down>
+
+func Ide()
+  :NERDTreeToggle
+  :RightSplit
+  :split
+  :DownSplit
+  :term
+  :vsplit
+  :term
+  :UpSplit
+endfunc
+
+command Ide execute Ide()
+
+
 " easy align config
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
-
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
 " suda config
 let g:suda_smart_edit = 1
+
+" vimtex config
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+
 
 " NERDtree config
 command Ntt NERDTreeToggle
@@ -179,69 +237,20 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-
-" vimtex config
-let g:tex_flavor='latex'
-let g:vimtex_view_method='zathura'
-
-" command line
-
-command Wa wa
-command Wq wq
-command Q q
-command Qa qa
-command Split split
-command Vsplit vsplit
-
-" glorious readline
-cnoremap <C-a> <Home>
-cnoremap <C-e> <End>
-cnoremap <C-p> <Up>
-cnoremap <C-n> <Down>
-cnoremap <C-b> <Left>
-cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
-cnoremap <C-f> <Right>
-cnoremap <M-b> <S-Left>
-cnoremap <M-f> <S-Right>
-
-func! DeleteTrailingWhitespace()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
-endfunc
-
-command DeleteWhiteSpace execute DeleteTrailingWhitespace()
-
-" Movement
-nnoremap <A-h> <C-w><Left>
-nnoremap <A-j> <C-w><Up>
-nnoremap <A-k> <C-w><Down>
-nnoremap <A-l> <C-w><Right>
-
-nnoremap <A-Left> <C-w><Left>
-nnoremap <A-Up> <C-w><Up>
-nnoremap <A-Down> <C-w><Down>
-nnoremap <A-Right> <C-w><Right>
-
-tnoremap <A-Left> <C-\><C-n><C-w><Left>
-tnoremap <A-Up> <C-\><C-n><C-w><Up>
-tnoremap <A-Down> <C-\><C-n><C-w><Down>
-tnoremap <A-Right> <C-\><C-n><C-w><Right>
-
-command LeftSplit normal <C-w><Left>
-command RightSplit normal <C-w><Right>
-command UpSplit normal <C-w><Up>
-command DownSplit normal <C-w><Down>
-
-func Ide()
-  :NERDTreeToggle
-  :RightSplit
-  :split
-  :DownSplit
-  :term
-  :vsplit
-  :term
-  :UpSplit
-endfunc
-
-command Ide execute Ide()
+" Using CocList
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>

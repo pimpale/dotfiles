@@ -1,7 +1,7 @@
 
 [options]
 font = Terminus (TTF) 18px
-scrollback_lines = 10000
+scrollback_lines = -1 # infinite
 
 [colors]
 # hard contrast: background = #1d2021

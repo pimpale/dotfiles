@@ -14,6 +14,7 @@ unlet autoload_plug_path
 call plug#begin('~/.nvim/plugins/')
 
 Plug 'airblade/vim-rooter'
+Plug 'digitaltoad/vim-pug'
 Plug 'junegunn/vim-easy-align'
 Plug 'lambdalisue/suda.vim'
 Plug 'lervag/vimtex'
@@ -21,6 +22,7 @@ Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'tikhomirov/vim-glsl'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fireplace'
@@ -112,6 +114,8 @@ endfunc
 
 command Ide execute Ide()
 
+" vim glsl config
+autocmd! BufNewFile,BufRead *.vs,*.fs,*.cl set ft=glsl
 
 " easy align config
 " Start interactive EasyAlign in visual mode (e.g. vipga)

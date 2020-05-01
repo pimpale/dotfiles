@@ -50,12 +50,7 @@ set softtabstop=2
 set expandtab
 set background=dark
 colorscheme gruvbox
-
-if has('unnamedplus')
-  set clipboard=unnamedplus
-else
-  set clipboard=unnamed
-endif
+set clipboard+=unnamedplus
 
 " command line
 command Wa wa

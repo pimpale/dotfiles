@@ -13,8 +13,8 @@ set global ui_options ncurses_assistant=off
 # no startup info
 set global startup_info_version 99990000
 
-# if not configured per file type, set tabs as 4 spaces
-set global tabstop 4
+# if not configured per file type, set tabs as 2 spaces
+set global tabstop 2
 
 # insert 4 spaces on tab key
 hook global InsertChar \t %{ exec -draft -itersel h@ } -group kakrc-replace-tabs-with-spaces
@@ -36,6 +36,13 @@ hook global InsertCompletionHide .* %{
 # text objects
 map global normal v <a-i>
 map global normal V <a-a>
+
+# Typos with writing
+define-command W -docstring "miscapped write" %{ write }
+define-command Wa -docstring "miscapped write" %{ write-all }
+define-command Waq  -docstring "miscapped write" %{ write-all-quit }
+define-command Wqa -docstring "miscapped write" %{ write-all-quit }
+
 
 # Install kak plugs
 evaluate-commands %sh{
@@ -65,6 +72,7 @@ set-option global plug_install_dir %sh{ echo $HOME/.kakplugins }
 plug "https://github.com/andreyorst/plug.kak" noload
 plug "https://github.com/occivink/kakoune-sudo-write"
 plug "https://github.com/greenfork/active-window.kak"
+plug "https://github.com/Delapouite/kakoune-text-objects"
 plug "https://github.com/leperdu/kakboard" config %{
     hook global WinCreate .* %{ kakboard-enable }
 }
@@ -78,6 +86,7 @@ plug "https://github.com/Delapouite/kakoune-i3" config %{
     }
     define-command term -docstring "spawn a new zsh terminal" %{
         x11-terminal zsh
+        quit
     }
 }
 
@@ -104,4 +113,14 @@ hook global WinSetOption filetype=(c|cpp|rust) %{
 }
 hook global WinSetOption filetype=rust %{
     set-option window lsp_server_configuration rust.clippy_preference="on"
+}
+
+# format text
+define-command Format -docstring "format" %{
+  lsp-formatting
+}
+
+# jump to next error
+define-command Ne -docstring "jump to next error" %{
+  lsp-find-error
 }

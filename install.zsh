@@ -25,4 +25,3 @@ install rofi
 install dunst
 install termite
 install vis
-install compton

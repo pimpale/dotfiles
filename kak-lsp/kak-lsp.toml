@@ -25,3 +25,9 @@ offset_encoding = "utf-8"
 [language.c_cpp.initialization_options]
 offsetEncoding = ["utf-8"]
 formatTool = "clang-format"
+
+[language.tsx]
+filetypes = ["typescript"]
+roots = ["package.json", "tsconfig.json"]
+command = "npx"
+args = ["typescript-language-server", "--stdio"]

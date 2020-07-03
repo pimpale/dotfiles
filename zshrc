@@ -114,11 +114,6 @@ if [ "$TERM" = "xterm-termite" ]; then
   export TERM="rxvt-256color"
 fi
 
-#when on ubuntu
-if grep -q ubuntu /etc/os-release; then
-  alias pacman="sudo pacapt"
-fi
-
 #helpfulness
 alias rm="rm -i"
 alias cp="cp -r"
@@ -149,4 +144,3 @@ alias wget-recursive-get="wget -r -nH --cut-dirs=2 --no-parent"
 unalias 9
 export PLAN9="/lib/plan9"
 export PATH=$PATH:$PLAN9/bin
-[ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh

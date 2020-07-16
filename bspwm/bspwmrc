@@ -12,3 +12,4 @@ nm-applet &
 blueman-applet &
 nitrogen --restore &
 xss-lock -- i3lock -n -i ~/dotfiles/assets/jupiter.png &
+~/.config/polybar/launch.sh

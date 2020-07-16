@@ -28,3 +28,4 @@ install vis
 install bspwm
 install sxhkd
 install picom
+install polybar

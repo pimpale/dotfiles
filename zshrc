@@ -114,11 +114,6 @@ if [ "$TERM" = "xterm-termite" ]; then
   export TERM="rxvt-256color"
 fi
 
-#when on ubuntu
-if grep -q ubuntu /etc/os-release; then
-  alias pacman="sudo pacapt"
-fi
-
 #helpfulness
 alias rm="rm -i"
 alias cp="cp -r"

@@ -68,7 +68,6 @@ evaluate-commands %sh{
 set-option global plug_install_dir %sh{ echo $HOME/.kakplugins }
 plug "https://github.com/andreyorst/plug.kak" noload
 plug "https://github.com/occivink/kakoune-sudo-write"
-plug "https://github.com/greenfork/active-window.kak"
 plug "https://github.com/Delapouite/kakoune-text-objects"
 plug "https://github.com/leperdu/kakboard" config %{
     hook global WinCreate .* %{ kakboard-enable }

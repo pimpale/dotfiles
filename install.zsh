@@ -27,3 +27,4 @@ install termite
 install vis
 install bspwm
 install sxhkd
+install picom

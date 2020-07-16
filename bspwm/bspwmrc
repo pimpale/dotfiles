@@ -1,0 +1,14 @@
+#!/bin/sh
+
+sxhkd &
+
+bspc monitor -d I II III IV V VI VII VIII IX X
+bspc config focus_follows_pointer true
+
+amixer sset Master 0% && pkill -RTMIN+1 i3blocks
+fcitx-autostart
+dunst &
+nm-applet &
+blueman-applet &
+nitrogen --restore &
+xss-lock -- i3lock -n -i ~/dotfiles/assets/jupiter.png &

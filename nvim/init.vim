@@ -28,6 +28,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fireplace'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-scripts/ebnf.vim'
 
 call plug#end()
 

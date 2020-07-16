@@ -16,9 +16,6 @@ set global startup_info_version 99990000
 # if not configured per file type, set tabs as 2 spaces
 set global tabstop 2
 
-# insert 4 spaces on tab key
-hook global InsertChar \t %{ exec -draft -itersel h@ } -group kakrc-replace-tabs-with-spaces
-
 # tab complete
 hook global InsertCompletionShow .* %{
     try %{
@@ -82,7 +79,7 @@ plug "https://github.com/Delapouite/kakoune-i3" config %{
     }
 
     define-command vsplit -docstring "split along a vertical line" %{
-        i3-new-left
+        i3-new-right
     }
     define-command term -docstring "spawn a new zsh terminal" %{
         x11-terminal zsh

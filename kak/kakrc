@@ -30,6 +30,12 @@ hook global InsertCompletionHide .* %{
   unmap window insert <s-tab> <c-p>
 }
 
+# leader mode
+map global normal <space> , -docstring 'leader'
+# clear selections
+map global normal <esc> <space> -docstring 'clear selections'
+
+
 # text objects
 map global normal v <a-i>
 map global normal V <a-a>
@@ -101,7 +107,6 @@ hook global WinSetOption filetype=(c|cpp|rust) %{
     map window lsp "p" "<esc>: lsp-find-error --previous --include-warnings<ret>" -docstring "find previous error or warning"
     lsp-enable-window
     hook -always global KakEnd .* lsp-exit
-    lsp-auto-hover-enable
     lsp-auto-hover-insert-mode-disable
     set-option window lsp_hover_anchor true
     set-face window DiagnosticError default+u
@@ -109,14 +114,4 @@ hook global WinSetOption filetype=(c|cpp|rust) %{
 }
 hook global WinSetOption filetype=rust %{
     set-option window lsp_server_configuration rust.clippy_preference="on"
-}
-
-# format text
-define-command Format -docstring "format" %{
-  lsp-formatting
-}
-
-# jump to next error
-define-command Ne -docstring "jump to next error" %{
-  lsp-find-error
 }

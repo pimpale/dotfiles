@@ -1,4 +1,4 @@
-verbosity = 0
+verbosity = 3
 
 [server]
 # exit session if no requests were received during given period in seconds

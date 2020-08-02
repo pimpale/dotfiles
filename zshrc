@@ -86,7 +86,6 @@ export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 export PATH=$PATH:"$HOME/bin"
-export PATH=$PATH:"$HOME/compilers/bin"
 export PATH=$PATH:"$HOME/.local/bin"
 
 # virtualenv
@@ -104,10 +103,6 @@ bindkey -e
 
 #add our scripts to el path
 export PATH=$PATH:"$HOME/dotfiles/bin"
-
-
-#for our good old linux box
-  alias wol-t4700="wol 66:66:66:66:66:66"
 
 # XTERM
 if [ "$TERM" = "xterm-termite" ]; then 
@@ -138,7 +133,6 @@ alias scd=cd
 alias "cd.."="cd .."
 alias mdkir=mkdir
 alias ,,=..
-alias wget-recursive-get="wget -r -nH --cut-dirs=2 --no-parent"
 
 #plan 9 is the superior operating system
 unalias 9

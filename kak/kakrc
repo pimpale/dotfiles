@@ -35,7 +35,6 @@ map global normal <space> , -docstring 'leader'
 # clear selections
 map global normal <esc> <space> -docstring 'clear selections'
 
-
 # text objects
 map global normal v <a-i>
 map global normal V <a-a>
@@ -45,7 +44,6 @@ define-command W -docstring "miscapped write" %{ write }
 define-command Wa -docstring "miscapped write" %{ write-all }
 define-command Waq -docstring "miscapped write" %{ write-all-quit }
 define-command Wqa -docstring "miscapped write" %{ write-all-quit }
-
 
 # Install kak plugs
 evaluate-commands %sh{
@@ -101,7 +99,7 @@ define-command lsp-restart %{ lsp-stop; lsp-start }
 set-option global lsp_completion_trigger "execute-keys 'h<a-h><a-k>\S[^\s,=;*(){}\[\]]\z<ret>'"
 set-option global lsp_diagnostic_line_error_sign "!"
 set-option global lsp_diagnostic_line_warning_sign "?"
-hook global WinSetOption filetype=(c|cpp|rust) %{
+hook global WinSetOption filetype=(c|cpp|rust|typescript) %{
     map window user "l" ": enter-user-mode lsp<ret>" -docstring "LSP mode"
     map window lsp "n" "<esc>: lsp-find-error --include-warnings<ret>" -docstring "find next error or warning"
     map window lsp "p" "<esc>: lsp-find-error --previous --include-warnings<ret>" -docstring "find previous error or warning"

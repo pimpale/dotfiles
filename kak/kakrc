@@ -31,13 +31,15 @@ hook global InsertCompletionHide .* %{
 }
 
 # leader mode
-map global normal <space> , -docstring 'leader'
+map global normal <space> , -docstring "leader"
 # clear selections
-map global normal <esc> <space> -docstring 'clear selections'
+map global normal <esc> <space> -docstring "clear selections"
 
-# text objects
-map global normal v <a-i>
-map global normal V <a-a>
+# text objects selection mode
+declare-user-mode sel
+map global normal v ":enter-user-mode sel <ret>" -docstring "select object mode"
+map global sel i <a-i> -docstring "select inner object"
+map global sel a <a-a> -docstring "select outer object"
 
 # Typos with writing
 define-command W -docstring "miscapped write" %{ write }
@@ -72,7 +74,10 @@ evaluate-commands %sh{
 set-option global plug_install_dir %sh{ echo $HOME/.kakplugins }
 plug "https://github.com/andreyorst/plug.kak" noload
 plug "https://github.com/occivink/kakoune-sudo-write"
-plug "https://github.com/Delapouite/kakoune-text-objects"
+plug "https://github.com/Delapouite/kakoune-text-objects"  config %{
+  # disable using % to select file, use vf
+  map global normal % nop
+}
 plug "https://github.com/leperdu/kakboard" config %{
     hook global WinCreate .* %{ kakboard-enable }
 }
@@ -80,7 +85,6 @@ plug "https://github.com/Delapouite/kakoune-i3" config %{
     define-command split -docstring "split along a horizontal line" %{
         i3-new-down
     }
-
     define-command vsplit -docstring "split along a vertical line" %{
         i3-new-right
     }
@@ -99,16 +103,16 @@ define-command lsp-restart %{ lsp-stop; lsp-start }
 set-option global lsp_completion_trigger "execute-keys 'h<a-h><a-k>\S[^\s,=;*(){}\[\]]\z<ret>'"
 set-option global lsp_diagnostic_line_error_sign "!"
 set-option global lsp_diagnostic_line_warning_sign "?"
-hook global WinSetOption filetype=(c|cpp|rust|typescript) %{
+hook global WinSetOption filetype=(c|cpp|rust|typescript|javascript|python) %{
     map window user "l" ": enter-user-mode lsp<ret>" -docstring "LSP mode"
     map window lsp "n" "<esc>: lsp-find-error --include-warnings<ret>" -docstring "find next error or warning"
     map window lsp "p" "<esc>: lsp-find-error --previous --include-warnings<ret>" -docstring "find previous error or warning"
-    lsp-enable-window
     hook -always global KakEnd .* lsp-exit
-    lsp-auto-hover-insert-mode-disable
     set-option window lsp_hover_anchor true
     set-face window DiagnosticError default+u
     set-face window DiagnosticWarning default+u
+    lsp-enable-window
+    lsp-auto-hover-insert-mode-disable
 }
 hook global WinSetOption filetype=rust %{
     set-option window lsp_server_configuration rust.clippy_preference="on"

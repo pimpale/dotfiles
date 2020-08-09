@@ -20,6 +20,7 @@ Plug 'lambdalisue/suda.vim'
 Plug 'lervag/vimtex'
 Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'gf3/peg.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tikhomirov/vim-glsl'
@@ -76,6 +77,8 @@ cnoremap <M-f> <S-Right>
 " Movement
 nnoremap j gj
 nnoremap k gk
+nnoremap d <del>
+nnoremap x V
 
 nnoremap <A-h> <C-w><Left>
 nnoremap <A-j> <C-w><Up>

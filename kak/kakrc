@@ -1,70 +1,58 @@
 # set colorscheme
 # gruvbox theme
 
-evaluate-commands %sh{
-    gray="bright-black"
-    red="bright-red"
-    green="bright-green"
-    yellow="bright-yellow"
-    blue="bright-blue"
-    purple="bright-magenta"
-    aqua="cyan"
-    orange="yellow"
+colorscheme gruvbox
+face global comment rgb:928374
 
-    bg="black"
-
-    fg="bright-white"
-
-    echo "
+define-command ttygruvbox -docstring "gruvbox colorscheme for tty" %{
         # Code highlighting
-        face global value         ${purple}
-        face global type          ${yellow}
-        face global variable      ${blue}
-        face global module        ${green}
-        face global function      ${fg}
-        face global string        ${green}
-        face global keyword       ${red}+b
-        face global operator      ${fg}
-        face global attribute     ${orange}
-        face global comment       ${gray}
+        face global value         magenta+b
+        face global type          yellow+b
+        face global variable      blue+b
+        face global module        green+b
+        face global function      white+b
+        face global string        green+b
+        face global keyword       red+b
+        face global operator      white+b
+        face global attribute     yellow
+        face global comment       black+b
         face global documentation comment
-        face global meta          ${aqua}
-        face global builtin       ${green}+b
+        face global meta          cyan
+        face global builtin       cyan
 
         # Markdown highlighting
-        face global title     ${green}+b
-        face global header    ${orange}
-        face global mono      ${aqua}
-        face global block     ${aqua}
-        face global link      ${blue}+u
-        face global bullet    ${yellow}
-        face global list      ${fg}
+        face global title     green
+        face global header    yellow+b
+        face global mono      cyan
+        face global block     cyan
+        face global link      blue+u
+        face global bullet    yellow+b
+        face global list      white+b
 
-        face global Default            ${fg},${bg}
-        face global PrimarySelection   ${fg},${blue}+fg
-        face global SecondarySelection ${bg},${blue}+fg
-        face global PrimaryCursor      ${bg},${fg}+fg
-        face global SecondaryCursor    ${bg},${gray}+fg
-        face global PrimaryCursorEol   ${bg},${gray}+fg
-        face global SecondaryCursorEol ${bg},${gray}+fg
-        face global LineNumbers        ${gray}+b
-        face global LineNumberCursor   ${yellow},${bg}
-        face global LineNumbersWrapped ${gray}
-        face global MenuForeground     ${purple},${bg}
-        face global MenuBackground     ${fg},${bg}
-        face global MenuInfo           ${fg}
-        face global Information        ${bg},${fg}
-        face global Error              ${bg},${red}
-        face global StatusLine         ${fg},${bg}
-        face global StatusLineMode     ${yellow}+b
-        face global StatusLineInfo     ${purple}
-        face global StatusLineValue    ${red}
-        face global StatusCursor       ${bg},${fg}
-        face global Prompt             ${yellow}
-        face global MatchingChar       ${fg},${bg}+b
-        face global BufferPadding      ${gray},${bg}
-        face global Whitespace         ${gray}+fd
-    "
+        face global Default            white,black
+        face global PrimarySelection   white,blue+bfg
+        face global SecondarySelection black,blue+bfg
+        face global PrimaryCursor      black,white+bfg
+        face global SecondaryCursor    black,white+bfg
+        face global PrimaryCursorEol   black,white+bfg
+        face global SecondaryCursorEol black,white+bfg
+        face global LineNumbers        black+b
+        face global LineNumberCursor   yellow,black+b
+        face global LineNumbersWrapped black+b
+        face global MenuForeground     magenta,black
+        face global MenuBackground     white,black
+        face global MenuInfo           white+b
+        face global Information        black,white+b
+        face global Error              black,red+b
+        face global StatusLine         white,black+b
+        face global StatusLineMode     yellow+b
+        face global StatusLineInfo     magenta+b
+        face global StatusLineValue    red+b
+        face global StatusCursor       black,white+b
+        face global Prompt             yellow+b
+        face global MatchingChar       white,magenta+b
+        face global BufferPadding      black,black+bfg
+        face global Whitespace         black+bf
 }
 
 # highlighters

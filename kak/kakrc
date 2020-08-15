@@ -2,57 +2,57 @@
 # gruvbox theme
 
 colorscheme gruvbox
-face global comment rgb:928374
+set-face global comment rgb:928374
 
 define-command ttygruvbox -docstring "gruvbox colorscheme for tty" %{
         # Code highlighting
-        face global value         magenta+b
-        face global type          yellow+b
-        face global variable      blue+b
-        face global module        green+b
-        face global function      white+b
-        face global string        green+b
-        face global keyword       red+b
-        face global operator      white+b
-        face global attribute     yellow
-        face global comment       black+b
-        face global documentation comment
-        face global meta          cyan
-        face global builtin       cyan
+        set-face global value         magenta+b
+        set-face global type          yellow+b
+        set-face global variable      blue+b
+        set-face global module        green+b
+        set-face global function      white+b
+        set-face global string        green+b
+        set-face global keyword       red+b
+        set-face global operator      white+b
+        set-face global attribute     yellow
+        set-face global comment       black+b
+        set-face global documentation comment
+        set-face global meta          cyan
+        set-face global builtin       cyan
 
         # Markdown highlighting
-        face global title     green
-        face global header    yellow+b
-        face global mono      cyan
-        face global block     cyan
-        face global link      blue+u
-        face global bullet    yellow+b
-        face global list      white+b
+        set-face global title     green
+        set-face global header    yellow+b
+        set-face global mono      cyan
+        set-face global block     cyan
+        set-face global link      blue+u
+        set-face global bullet    yellow+b
+        set-face global list      white+b
 
-        face global Default            white,black
-        face global PrimarySelection   white,blue+bfg
-        face global SecondarySelection black,blue+bfg
-        face global PrimaryCursor      black,white+bfg
-        face global SecondaryCursor    black,white+bfg
-        face global PrimaryCursorEol   black,white+bfg
-        face global SecondaryCursorEol black,white+bfg
-        face global LineNumbers        black+b
-        face global LineNumberCursor   yellow,black+b
-        face global LineNumbersWrapped black+b
-        face global MenuForeground     magenta,black
-        face global MenuBackground     white,black
-        face global MenuInfo           white+b
-        face global Information        black,white+b
-        face global Error              black,red+b
-        face global StatusLine         white,black+b
-        face global StatusLineMode     yellow+b
-        face global StatusLineInfo     magenta+b
-        face global StatusLineValue    red+b
-        face global StatusCursor       black,white+b
-        face global Prompt             yellow+b
-        face global MatchingChar       white,magenta+b
-        face global BufferPadding      black,black+bfg
-        face global Whitespace         black+bf
+        set-face global Default            white,black
+        set-face global PrimarySelection   white,blue+bfg
+        set-face global SecondarySelection black,blue+bfg
+        set-face global PrimaryCursor      black,white+bfg
+        set-face global SecondaryCursor    black,white+bfg
+        set-face global PrimaryCursorEol   black,white+bfg
+        set-face global SecondaryCursorEol black,white+bfg
+        set-face global LineNumbers        black+b
+        set-face global LineNumberCursor   yellow,black+b
+        set-face global LineNumbersWrapped black+b
+        set-face global MenuForeground     magenta,black
+        set-face global MenuBackground     white,black
+        set-face global MenuInfo           white+b
+        set-face global Information        black,white+b
+        set-face global Error              black,red+b
+        set-face global StatusLine         white,black+b
+        set-face global StatusLineMode     yellow+b
+        set-face global StatusLineInfo     magenta+b
+        set-face global StatusLineValue    red+b
+        set-face global StatusCursor       black,white+b
+        set-face global Prompt             yellow+b
+        set-face global MatchingChar       white,magenta+b
+        set-face global BufferPadding      black,black+bfg
+        set-face global Whitespace         black+bf
 }
 
 # highlighters
@@ -61,12 +61,9 @@ add-highlighter global/ show-matching
 add-highlighter global/ show-whitespaces
 
 # no clippy
-set global ui_options ncurses_assistant=off
+set-option global ui_options ncurses_assistant=off
 # no startup info
-set global startup_info_version 99990000
-
-# if not configured per file type, set tabs as 2 spaces
-set global tabstop 2
+set-option global startup_info_version 99990000
 
 # tab complete
 hook global InsertCompletionShow .* %{
@@ -88,10 +85,9 @@ map global normal <space> , -docstring "leader"
 map global normal <esc> <space> -docstring "clear selections"
 
 # text objects selection mode
-declare-user-mode sel
-map global normal v ":enter-user-mode sel <ret>" -docstring "select object mode"
-map global sel i <a-i> -docstring "select inner object"
-map global sel a <a-a> -docstring "select outer object"
+#declare-user-mode sel
+#map global sel i <a-i> -docstring "select inner object"
+#map global sel a <a-a> -docstring "select outer object"
 
 # Typos with writing
 define-command W -docstring "miscapped write" %{ write }
@@ -124,17 +120,32 @@ evaluate-commands %sh{
 
 # plugins
 set-option global plug_install_dir %sh{ echo $HOME/.kakplugins }
-plug "https://github.com/andreyorst/plug.kak" noload
-plug "https://github.com/occivink/kakoune-sudo-write"
-plug "https://github.com/delapouite/kakoune-palette"
-plug "https://github.com/delapouite/kakoune-text-objects"  config %{
-  # disable using % to select file, use vf
-  map global normal % nop
+plug "https://github.com/robertmeta/plug.kak" noload
+plug "https://github.com/occivink/kakoune-sudo-write" ensure
+plug "https://github.com/delapouite/kakoune-palette" ensure
+
+plug "https://github.com/andreyorst/smarttab.kak" ensure  defer expandtab %{
+    set-option global tabstop 2
+    set-option global softtabstop 2
+} config %{
+    # these languages will use `expandtab' behavior
+    hook global WinSetOption filetype=(c|cpp|rust|typescript|javascript|python|markdown) expandtab
+    # these languages will use `noexpandtab' behavior
+    hook global WinSetOption filetype=(makefile|gas) noexpandtab
 }
-plug "https://github.com/leperdu/kakboard" config %{
+
+plug "https://github.com/delapouite/kakoune-text-objects" ensure config %{
+    text-object-map
+    # disable using % to select file, use vf
+    hook -always global WinSetOption .*  map global normal % nop
+
+    map global normal v ":enter-user-mode selectors <ret>" -docstring "select object mode"
+}
+
+plug "https://github.com/leperdu/kakboard" ensure config %{
     hook global WinCreate .* %{ kakboard-enable }
 }
-plug "https://github.com/Delapouite/kakoune-i3" config %{
+plug "https://github.com/Delapouite/kakoune-i3" ensure config %{
     define-command split -docstring "split along a horizontal line" %{
         i3-new-down
     }
@@ -167,6 +178,7 @@ hook global WinSetOption filetype=(c|cpp|rust|typescript|javascript|python) %{
     lsp-enable-window
     lsp-auto-hover-insert-mode-disable
 }
+
 hook global WinSetOption filetype=rust %{
     set-option window lsp_server_configuration rust.clippy_preference="on"
 }

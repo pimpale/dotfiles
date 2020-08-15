@@ -77,8 +77,6 @@ cnoremap <M-f> <S-Right>
 " Movement
 nnoremap j gj
 nnoremap k gk
-nnoremap d <del>
-nnoremap x V
 
 nnoremap <A-h> <C-w><Left>
 nnoremap <A-j> <C-w><Up>

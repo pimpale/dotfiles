@@ -56,3 +56,9 @@ filetypes = ["html"]
 roots = ["package.json"]
 command = "html-languageserver"
 args = ["--stdio"]
+
+[language.java]
+filetypes = ["java"]
+roots = [".classpath", ".git"]
+command = "java-language-server"
+formatTool = "google-java-format"

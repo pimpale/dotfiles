@@ -4,57 +4,6 @@
 colorscheme gruvbox
 set-face global comment rgb:928374
 
-define-command ttygruvbox -docstring "gruvbox colorscheme for tty" %{
-        # Code highlighting
-        set-face global value         magenta+b
-        set-face global type          yellow+b
-        set-face global variable      blue+b
-        set-face global module        green+b
-        set-face global function      white+b
-        set-face global string        green+b
-        set-face global keyword       red+b
-        set-face global operator      white+b
-        set-face global attribute     yellow
-        set-face global comment       black+b
-        set-face global documentation comment
-        set-face global meta          cyan
-        set-face global builtin       cyan
-
-        # Markdown highlighting
-        set-face global title     green
-        set-face global header    yellow+b
-        set-face global mono      cyan
-        set-face global block     cyan
-        set-face global link      blue+u
-        set-face global bullet    yellow+b
-        set-face global list      white+b
-
-        set-face global Default            white,black
-        set-face global PrimarySelection   white,blue+bfg
-        set-face global SecondarySelection black,blue+bfg
-        set-face global PrimaryCursor      black,white+bfg
-        set-face global SecondaryCursor    black,white+bfg
-        set-face global PrimaryCursorEol   black,white+bfg
-        set-face global SecondaryCursorEol black,white+bfg
-        set-face global LineNumbers        black+b
-        set-face global LineNumberCursor   yellow,black+b
-        set-face global LineNumbersWrapped black+b
-        set-face global MenuForeground     magenta,black
-        set-face global MenuBackground     white,black
-        set-face global MenuInfo           white+b
-        set-face global Information        black,white+b
-        set-face global Error              black,red+b
-        set-face global StatusLine         white,black+b
-        set-face global StatusLineMode     yellow+b
-        set-face global StatusLineInfo     magenta+b
-        set-face global StatusLineValue    red+b
-        set-face global StatusCursor       black,white+b
-        set-face global Prompt             yellow+b
-        set-face global MatchingChar       white,magenta+b
-        set-face global BufferPadding      black,black+bfg
-        set-face global Whitespace         black+bf
-}
-
 # highlighters
 add-highlighter global/ number-lines
 add-highlighter global/ show-matching
@@ -64,6 +13,9 @@ add-highlighter global/ show-whitespaces
 set-option global ui_options ncurses_assistant=off
 # no startup info
 set-option global startup_info_version 99990000
+
+# space + tabs
+set-option global tabstop 2
 
 # tab complete
 hook global InsertCompletionShow .* %{
@@ -79,15 +31,24 @@ hook global InsertCompletionHide .* %{
   unmap window insert <s-tab> <c-p>
 }
 
-# leader mode
+# leader mode starts with space instead of comma
 map global normal <space> , -docstring "leader"
-# clear selections
 map global normal <esc> <space> -docstring "clear selections"
 
-# text objects selection mode
-#declare-user-mode sel
-#map global sel i <a-i> -docstring "select inner object"
-#map global sel a <a-a> -docstring "select outer object"
+# from kakoune-text-objects, but mapped to v instead like vim
+try %{ declare-user-mode selectors }
+map global normal v ': enter-user-mode selectors<ret>' -docstring 'selectors…'
+map global selectors 'u' '*%s<ret>' -docstring 'select all'
+map global selectors 'i' '<a-i>' -docstring 'select inside object <a-i>'
+map global selectors 'a' '<a-a>' -docstring 'select outside object <a-a>'
+map global selectors 'j' '<a-[>' -docstring 'select inner object start <a-[>'
+map global selectors 'k' '<a-]>' -docstring 'select inner object end <a-]>'
+map global selectors 'J' '<a-{>' -docstring 'extend inner object start <a-{>'
+map global selectors 'K' '<a-}>' -docstring 'extend inner object end <a-}>'
+map global selectors 'h' '[' -docstring 'select object start ['
+map global selectors 'l' ']' -docstring 'select object end ]'
+map global selectors 'H' '{' -docstring 'extend object start {'
+map global selectors 'L' '}' -docstring 'extend object end }'
 
 # Typos with writing
 define-command W -docstring "miscapped write" %{ write }
@@ -119,29 +80,12 @@ evaluate-commands %sh{
 }
 
 # plugins
-set-option global plug_install_dir %sh{ echo $HOME/.kakplugins }
-plug "https://github.com/robertmeta/plug.kak" noload
+plug "https://github.com/robertmeta/plug.kak" noload config %{
+    set-option global plug_install_dir %sh{ echo $HOME/.kakplugins }
+}
 plug "https://github.com/occivink/kakoune-sudo-write" ensure
 plug "https://github.com/delapouite/kakoune-palette" ensure
-
-plug "https://github.com/andreyorst/smarttab.kak" ensure  defer expandtab %{
-    set-option global tabstop 2
-    set-option global softtabstop 2
-} config %{
-    # these languages will use `expandtab' behavior
-    hook global WinSetOption filetype=(c|cpp|rust|typescript|javascript|python|markdown) expandtab
-    # these languages will use `noexpandtab' behavior
-    hook global WinSetOption filetype=(makefile|gas) noexpandtab
-}
-
-plug "https://github.com/delapouite/kakoune-text-objects" ensure config %{
-    text-object-map
-    # disable using % to select file, use vf
-    hook -always global WinSetOption .*  map global normal % nop
-
-    map global normal v ":enter-user-mode selectors <ret>" -docstring "select object mode"
-}
-
+plug "https://github.com/delapouite/kakoune-text-objects" ensure
 plug "https://github.com/leperdu/kakboard" ensure config %{
     hook global WinCreate .* %{ kakboard-enable }
 }
@@ -158,27 +102,42 @@ plug "https://github.com/Delapouite/kakoune-i3" ensure config %{
     }
 }
 
-# kak-lsp
-eval %sh{kak-lsp --kakoune -s $kak_session}
-lsp-enable
+plug "ul/kak-lsp" ensure do %{
+    cargo install --locked --force --path .
+} config %{
+    # uncomment to enable debugging
+    # eval %sh{echo ${kak_opt_lsp_cmd} >> /tmp/kak-lsp.log}
+    # set global lsp_cmd "kak-lsp -s %val{session} -vvv --log /tmp/kak-lsp.log"
 
-# C++ and other languages
-define-command lsp-restart %{ lsp-stop; lsp-start }
-set-option global lsp_completion_trigger "execute-keys 'h<a-h><a-k>\S[^\s,=;*(){}\[\]]\z<ret>'"
-set-option global lsp_diagnostic_line_error_sign "!"
-set-option global lsp_diagnostic_line_warning_sign "?"
-hook global WinSetOption filetype=(c|cpp|rust|typescript|javascript|python) %{
-    map window user "l" ": enter-user-mode lsp<ret>" -docstring "LSP mode"
-    map window lsp "n" "<esc>: lsp-find-error --include-warnings<ret>" -docstring "find next error or warning"
-    map window lsp "p" "<esc>: lsp-find-error --previous --include-warnings<ret>" -docstring "find previous error or warning"
-    hook -always global KakEnd .* lsp-exit
-    set-option window lsp_hover_anchor true
-    set-face window DiagnosticError default+u
-    set-face window DiagnosticWarning default+u
-    lsp-enable-window
-    lsp-auto-hover-insert-mode-disable
-}
+    # this is not necessary; the `lsp-enable-window` will take care of it
+    # eval %sh{${kak_opt_lsp_cmd} --kakoune -s $kak_session}
 
-hook global WinSetOption filetype=rust %{
-    set-option window lsp_server_configuration rust.clippy_preference="on"
+    set-option global lsp_diagnostic_line_error_sign "!"
+    set-option global lsp_diagnostic_line_warning_sign "?"
+
+    define-command lsp-restart -docstring 'restart lsp server' %{ lsp-stop; lsp-start }
+    hook global WinSetOption filetype=(c|cpp|cc|rust|javascript|typescript|python|json|html|java) %{
+        set-option window lsp_auto_highlight_references true
+        set-option window lsp_hover_anchor false
+        lsp-auto-hover-enable
+        echo -debug "Enabling LSP for filtetype %opt{filetype}"
+        lsp-enable-window
+
+        map window user "l" ": enter-user-mode lsp<ret>" -docstring "LSP mode"
+        map window lsp "n" "<esc>: lsp-find-error --include-warnings<ret>" -docstring "find next error or warning"
+        map window lsp "p" "<esc>: lsp-find-error --previous --include-warnings<ret>" -docstring "find previous error or warning"
+    }
+
+    hook global WinSetOption filetype=(rust) %{
+        set-option window lsp_server_configuration rust.clippy_preference="on"
+    }
+
+    hook global WinSetOption filetype=rust %{
+        hook window BufWritePre .* %{
+            evaluate-commands %sh{
+                test -f rustfmt.toml && printf lsp-formatting-sync
+            }
+        }
+    }
+    hook global KakEnd .* lsp-exit
 }

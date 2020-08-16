@@ -14,6 +14,9 @@ set-option global ui_options ncurses_assistant=off
 # no startup info
 set-option global startup_info_version 99990000
 
+# show value
+set-option -add global modelinefmt '  U+%sh{printf "%04x" "$kak_cursor_char_value"}'
+
 # space + tabs
 set-option global tabstop 2
 
@@ -126,6 +129,10 @@ plug "ul/kak-lsp" ensure do %{
         map window user "l" ": enter-user-mode lsp<ret>" -docstring "LSP mode"
         map window lsp "n" "<esc>: lsp-find-error --include-warnings<ret>" -docstring "find next error or warning"
         map window lsp "p" "<esc>: lsp-find-error --previous --include-warnings<ret>" -docstring "find previous error or warning"
+    }
+
+    hook global WinSetOption filetype=(java) %{
+        set-option window lsp_server_configuration rust.clippy_preference="on"
     }
 
     hook global WinSetOption filetype=(rust) %{

@@ -86,6 +86,7 @@ evaluate-commands %sh{
 plug "https://github.com/robertmeta/plug.kak" noload config %{
     set-option global plug_install_dir %sh{ echo $HOME/.kakplugins }
 }
+plug "https://github.com/pimpale/kak-lspconfigure" ensure
 plug "https://github.com/occivink/kakoune-sudo-write" ensure
 plug "https://github.com/delapouite/kakoune-palette" ensure
 plug "https://github.com/delapouite/kakoune-text-objects" ensure

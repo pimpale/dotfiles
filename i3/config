@@ -60,16 +60,13 @@ bindsym $mod+Shift+Right move right
 
 # splits
 bindsym $mod+v layout splitv
-bindsym $mod+h layout splith
+bindsym $mod+s layout splith
 
-bindsym $mod+Shift+h split h
 bindsym $mod+Shift+v split v
+bindsym $mod+Shift+s split h
 
 # tabs
 bindsym $mod+Shift+t layout toggle tabbed splith
-
-# stacking
-bindsym $mod+Shift+s layout toggle stacking splitv
 
 # toggle tiling / floating
 bindsym $mod+Shift+f floating toggle

@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 pwd="$HOME/dotfiles"
 mkdir "$HOME/.config"

@@ -29,3 +29,5 @@ install bspwm
 install sxhkd
 install picom
 install polybar
+install tmux
+

@@ -39,7 +39,7 @@ map global normal <space> , -docstring "leader"
 map global normal <esc> <space> -docstring "clear selections"
 
 # enter into command mode with leader e
-map global user 'e' ':' -docstring "enter command"
+map global user <space> ':' -docstring "enter command"
 
 # from kakoune-text-objects, but mapped to v instead like vim
 try %{ declare-user-mode selectors }

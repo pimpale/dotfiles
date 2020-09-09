@@ -1,17 +1,12 @@
 ! ------------------------------------------------------------------------------
-! ROFI Color theme
+! rofi color theme
 ! ------------------------------------------------------------------------------
 rofi.color-enabled: true
-#		   			Window	  	  Border	 	 Separator
-rofi.color-window: argb:B0435e75, argb:D0435e75, argb:D0435e75
+#                  window         border         separator
+rofi.color-window: argb:b0504945, argb:b0504945, argb:b0504945
 
-#		  			 Background	  Foreground	 Alt Background Highlight Bg   Highlight Fg
-rofi.color-normal: argb:00435e75, argb:FF9dbeda, argb:00486883, argb:A02C3E4F, argb:D09dbeda
-rofi.color-active: argb:00435e75, argb:D0734375, argb:00486883, argb:A02C3E4F, argb:D0734375
-rofi.color-urgent: argb:00435e75, argb:D0b9524e, argb:00486883, argb:A02C3E4F, argb:D0b9524e
+#                  background     foreground     alt background highlight bg   highlight fg
+rofi.color-normal: argb:00282828, argb:ffebdbb2, argb:00282828, argb:b0504945, argb:ff83a598
 
-
-
-
-rofi.font: MonacoB 14
+rofi.font: terminus bold 14
 rofi.hide-scrollbar: true

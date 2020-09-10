@@ -1,0 +1,7 @@
+configuration {
+  font: "terminus bold 14";
+  fullscreen: true;
+  hide-scrollbar: true;
+  padding: 300;
+  theme: "custom-gruvbox";
+}

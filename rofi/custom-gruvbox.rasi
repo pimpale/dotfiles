@@ -106,7 +106,7 @@ element-icon {
 window {
     padding:          300;
     background-color: var(background);
-    border:           1;
+    border:           0;
 }
 mainbox {
     padding: 0;

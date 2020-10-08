@@ -124,7 +124,7 @@ plug "ul/kak-lsp" ensure do %{
     set-option global lsp_diagnostic_line_warning_sign "?"
 
     define-command lsp-restart -docstring 'restart lsp server' %{ lsp-stop; lsp-start }
-    hook global WinSetOption filetype=(c|cpp|cc|rust|javascript|typescript|python|json|html|java) %{
+    hook global WinSetOption filetype=(c|cpp|rust|javascript|typescript|python|json|html|java|latex) %{
         set-option window lsp_auto_highlight_references true
         set-option window lsp_hover_anchor false
         lsp-auto-hover-disable
@@ -143,6 +143,11 @@ plug "ul/kak-lsp" ensure do %{
                 test -f rustfmt.toml && printf lsp-formatting-sync
             }
         }
+    }
+
+    hook global WinSetOption filetype=(latex) %{
+        # Line Wrapping
+        add-highlighter window/ wrap -indent -width 120
     }
 
     hook global KakEnd .* lsp-exit

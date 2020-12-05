@@ -1,8 +1,7 @@
 # set colorscheme
 # gruvbox theme
 
-colorscheme gruvbox
-set-face global comment rgb:928374
+colorscheme mygruvbox
 
 # highlighters
 add-highlighter global/ number-lines
@@ -56,7 +55,6 @@ map global selectors 'l' ']' -docstring 'select object end ]'
 map global selectors 'H' '{' -docstring 'extend object start {'
 map global selectors 'L' '}' -docstring 'extend object end }'
 map global normal '%' nop
-map global normal <c-n> <a-s>
 
 # Typos with writing
 define-command W -docstring "miscapped write" %{ write }
@@ -93,7 +91,15 @@ plug "https://github.com/robertmeta/plug.kak" noload config %{
 }
 plug "https://github.com/pimpale/kak-lspconfigure" ensure
 plug "https://github.com/occivink/kakoune-sudo-write" ensure
-plug "https://github.com/delapouite/kakoune-palette" ensure
+plug  "https://github.com/ftonneau/wordcount.kak" ensure
+plug "https://github.com/bodhizafa/kak-rainbow" ensure config %{
+  hook global WinSetOption filetype=(rust|python|c|c++|scheme|lisp|clojure|javascript|json) %{
+          rainbow-enable-window
+  }
+}
+plug "https://github.com/insipx/kak-crosshairs" ensure config %{
+    crosshairs
+}
 plug "https://github.com/delapouite/kakoune-text-objects" ensure
 plug "https://github.com/leperdu/kakboard" ensure config %{
     hook global WinCreate .* %{ kakboard-enable }

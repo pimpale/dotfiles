@@ -58,7 +58,7 @@ formatTool = "clang-format"
 filetypes = ["typescript"]
 roots = ["package.json", "tsconfig.json"]
 command = "npx"
-args = ["typescript-language-server", "--stdio"]
+args = ["--quiet", "typescript-language-server", "--stdio"]
 
 [language.python]
 filetypes = ["python"]
@@ -69,20 +69,20 @@ offset_encoding = "utf-8"
 [language.json]
 filetypes = ["json"]
 roots = ["package.json"]
-command = "json-languageserver"
-args = ["--stdio"]
+command = "npx"
+args = ["--quiet", "vscode-json-languageserver",  "--stdio"]
 
 [language.css]
 filetypes = ["css"]
 roots = ["package.json"]
-command = "css-languageserver"
-args = ["--stdio"]
+command = "npx"
+args = ["--quiet", "vscode-css-languageserver-bin", "--stdio"]
 
 [language.html]
 filetypes = ["html"]
 roots = ["package.json"]
 command = "html-languageserver"
-args = ["--stdio"]
+args = ["--quiet", "--stdio"]
 
 [language.java]
 filetypes = ["java"]

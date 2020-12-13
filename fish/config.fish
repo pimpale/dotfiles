@@ -1,5 +1,6 @@
 set PATH $HOME/bin $PATH
 set PATH $HOME/.local/bin $PATH
+set PATH $HOME/.cargo/bin $PATH
 set PATH $HOME/dotfiles/bin $PATH
 
 set ANDROID_HOME $HOME/Android/Sdk
@@ -14,3 +15,5 @@ set EDITOR "kak"
 set LC_CTYPE "en_US.UTF-8"
 
 set fish_greeting ""
+
+fzf_key_bindings

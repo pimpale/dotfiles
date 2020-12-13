@@ -92,11 +92,6 @@ plug "https://github.com/robertmeta/plug.kak" noload config %{
 plug "https://github.com/pimpale/kak-lspconfigure" ensure
 plug "https://github.com/occivink/kakoune-sudo-write" ensure
 plug  "https://github.com/ftonneau/wordcount.kak" ensure
-plug "https://github.com/bodhizafa/kak-rainbow" ensure config %{
-  hook global WinSetOption filetype=(rust|python|c|c++|scheme|lisp|clojure|javascript|json) %{
-          rainbow-enable-window
-  }
-}
 plug "https://github.com/insipx/kak-crosshairs" ensure config %{
     crosshairs
 }
@@ -121,8 +116,8 @@ plug "ul/kak-lsp" ensure do %{
     cargo install --locked --force --path .
 } config %{
     # uncomment to enable debugging
-    # eval %sh{echo ${kak_opt_lsp_cmd} >> /tmp/kak-lsp.log}
-    # set global lsp_cmd "kak-lsp -s %val{session} -vvv --log /tmp/kak-lsp.log"
+    eval %sh{echo ${kak_opt_lsp_cmd} >> /tmp/kak-lsp.log}
+    set global lsp_cmd "kak-lsp -s %val{session} -vvv --log /tmp/kak-lsp.log"
 
     # this is not necessary; the `lsp-enable-window` will take care of it
     # eval %sh{${kak_opt_lsp_cmd} --kakoune -s $kak_session}
@@ -131,7 +126,7 @@ plug "ul/kak-lsp" ensure do %{
     set-option global lsp_diagnostic_line_warning_sign "?"
 
     define-command lsp-restart -docstring 'restart lsp server' %{ lsp-stop; lsp-start }
-    hook global WinSetOption filetype=(c|cpp|rust|javascript|typescript|python|json|html|java|latex) %{
+    hook global WinSetOption filetype=(c|cpp|rust|javascript|typescript|python|json|css|html|java|latex) %{
         set-option window lsp_auto_highlight_references true
         set-option window lsp_hover_anchor false
         lsp-auto-hover-disable
@@ -141,6 +136,10 @@ plug "ul/kak-lsp" ensure do %{
         map window user "l" ": enter-user-mode lsp<ret>" -docstring "LSP mode"
         map window lsp "n" "<esc>: lsp-find-error --include-warnings<ret>" -docstring "find next error or warning"
         map window lsp "p" "<esc>: lsp-find-error --previous --include-warnings<ret>" -docstring "find previous error or warning"
+    }
+
+    hook global WinSetOption filetype=(json) %{
+        set-option window lsp_auto_highlight_references false
     }
 
     hook global WinSetOption filetype=(rust) %{

@@ -11,9 +11,6 @@ install() {
   install_to $1 ".config"
 }
 
-# special
-install_to zshrc .zshrc
-
 # regulars
 install nvim
 install kak
@@ -25,9 +22,6 @@ install rofi
 install dunst
 install termite
 install vis
-install bspwm
-install sxhkd
 install picom
-install polybar
 install tmux
-
+install fish

@@ -111,9 +111,9 @@ plug "https://github.com/Delapouite/kakoune-i3" ensure config %{
     define-command vsplit -docstring "split along a vertical line" %{
         i3-new-right
     }
-    define-command term -docstring "spawn a new zsh terminal" %{
-        x11-terminal zsh
-        quit
+    define-command term -docstring "spawn a new zsh terminal" %sh{
+        echo x11-terminal $SHELL
+        echo quit
     }
 }
 

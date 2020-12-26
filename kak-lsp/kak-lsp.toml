@@ -66,6 +66,11 @@ roots = ["requirements.txt", "setup.py", ".git", ".hg"]
 command = "pyls"
 offset_encoding = "utf-8"
 
+# # Alternative Pyright Config Couldn't get this to work (keeps restarting)
+# command = "npx"
+# args = ["--quiet", "-p", "pyright", "pyright-langserver", "--stdio"]
+# offset_encoding = "utf-8"
+
 [language.json]
 filetypes = ["json"]
 roots = ["package.json"]

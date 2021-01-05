@@ -24,16 +24,16 @@ set-face global list      white+b
 
 set-face global Default            white,black
 set-face global PrimarySelection   white,blue+bfg
-set-face global SecondarySelection black,blue+bfg
+set-face global SecondarySelection white,blue+fg
 set-face global PrimaryCursor      black,white+bfg
-set-face global SecondaryCursor    black,white+bfg
 set-face global PrimaryCursorEol   black,white+bfg
-set-face global SecondaryCursorEol black,white+bfg
+set-face global SecondaryCursor    black,white+fg
+set-face global SecondaryCursorEol black,white+fg
 set-face global LineNumbers        black+b
 set-face global LineNumberCursor   yellow,black+b
 set-face global LineNumbersWrapped black+b
-set-face global MenuForeground     magenta,black
-set-face global MenuBackground     white,black
+set-face global MenuForeground     magenta,black+b
+set-face global MenuBackground     white,black+b
 set-face global MenuInfo           white+b
 set-face global Information        black,white+b
 set-face global Error              black,red+b

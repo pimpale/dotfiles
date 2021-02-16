@@ -63,13 +63,10 @@ args = ["--quiet", "typescript-language-server", "--stdio"]
 [language.python]
 filetypes = ["python"]
 roots = ["requirements.txt", "setup.py", ".git", ".hg"]
-command = "pyls"
 offset_encoding = "utf-8"
+command = "npx"
+args = ["--quiet", "-p", "pyright", "pyright-langserver", "--stdio"]
 
-# # Alternative Pyright Config Couldn't get this to work (keeps restarting)
-# command = "npx"
-# args = ["--quiet", "-p", "pyright", "pyright-langserver", "--stdio"]
-# offset_encoding = "utf-8"
 
 [language.json]
 filetypes = ["json"]

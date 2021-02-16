@@ -111,7 +111,6 @@ plug "https://github.com/Delapouite/kakoune-i3" ensure config %{
         echo quit
     }
 }
-
 plug "ul/kak-lsp" ensure do %{
     cargo install --locked --force --path .
 } config %{

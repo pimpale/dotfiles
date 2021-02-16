@@ -40,6 +40,7 @@ map global normal <esc> <space> -docstring "clear selections"
 # enter into command mode with leader e
 map global user <space> ':' -docstring "enter command"
 
+
 # from kakoune-text-objects, but mapped to v instead like vim
 try %{ declare-user-mode selectors }
 map global normal 'v' ': enter-user-mode selectors<ret>' -docstring 'selectors…'
@@ -55,6 +56,7 @@ map global selectors 'l' ']' -docstring 'select object end ]'
 map global selectors 'H' '{' -docstring 'extend object start {'
 map global selectors 'L' '}' -docstring 'extend object end }'
 map global normal '%' nop
+
 
 # Typos with writing
 define-command W -docstring "miscapped write" %{ write }
@@ -111,7 +113,22 @@ plug "https://github.com/Delapouite/kakoune-i3" ensure config %{
         echo quit
     }
 }
-plug "ul/kak-lsp" ensure do %{
+plug "https://github.com/dmerejkowsky/kak-subvert" ensure do %{
+    cargo install --locked --force --path .
+} noload config %{
+    declare-user-mode subvert
+    map global user n ':enter-user-mode subvert<ret>' -docstring 'enter subvert user mode'
+    map global subvert c '<esc>|kak-subvert camel<ret>' -docstring 'convert to camel case'
+    map global subvert k '<esc>|kak-subvert kebab<ret>' -docstring 'convert to kebab case'
+    map global subvert p '<esc>|kak-subvert pascal<ret>' -docstring 'convert to pascal case'
+    map global subvert . '<esc>|kak-subvert sentence<ret>' -docstring 'convert to sentence case'
+    map global subvert s '<esc>|kak-subvert snake<ret>' -docstring 'convert to snake case'
+    map global subvert S '<esc>|kak-subvert screaming<ret>' -docstring 'convert to screaming case'
+    map global subvert t '<esc>|kak-subvert train<ret>' -docstring 'convert to train case'
+    map global subvert T '<esc>|kak-subvert title<ret>' -docstring 'convert to title case'
+    map global subvert u '<esc>|kak-subvert ugly<ret>' -docstring 'convert to ugly case'
+}
+plug "https://github.com/ul/kak-lsp" ensure do %{
     cargo install --locked --force --path .
 } config %{
     # uncomment to enable debugging

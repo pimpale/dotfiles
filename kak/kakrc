@@ -92,7 +92,6 @@ evaluate-commands %sh{
 plug "https://github.com/robertmeta/plug.kak" noload config %{
     set-option global plug_install_dir %sh{ echo $HOME/.kakplugins }
 }
-plug "https://github.com/pimpale/kak-lspconfigure" ensure
 plug "https://github.com/occivink/kakoune-sudo-write" ensure
 plug  "https://github.com/ftonneau/wordcount.kak" ensure
 plug "https://github.com/insipx/kak-crosshairs" ensure config %{
@@ -139,7 +138,7 @@ plug "https://github.com/ul/kak-lsp" ensure do %{
 } config %{
     # uncomment to enable debugging
     eval %sh{echo ${kak_opt_lsp_cmd} >> /tmp/kak-lsp.log}
-    set global lsp_cmd "kak-lsp -s %val{session} -vvv --log /tmp/kak-lsp.log"
+    set global lsp_cmd "kak-lsp -s %val{session} --log /tmp/kak-lsp.log"
 
     # this is not necessary; the `lsp-enable-window` will take care of it
     # eval %sh{${kak_opt_lsp_cmd} --kakoune -s $kak_session}

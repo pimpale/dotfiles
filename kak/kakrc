@@ -64,6 +64,29 @@ define-command Wa -docstring "miscapped write" %{ write-all }
 define-command Waq -docstring "miscapped write" %{ write-all-quit }
 define-command Wqa -docstring "miscapped write" %{ write-all-quit }
 
+# Tmux vsplit if running in tmux
+hook global ModuleLoaded tmux %{
+    define-command -docstring "vsplit [<commands>]: split tmux vertically" \
+    vsplit -params .. -command-completion %{
+        tmux-terminal-horizontal kak -c %val{session} -e "%arg{@}"
+    }
+
+    define-command -docstring "split [<commands>]: split tmux horizontally" \
+    split -params .. -command-completion %{
+        tmux-terminal-vertical kak -c %val{session} -e "%arg{@}"
+    }
+
+    define-command -docstring "tabnew [<commands>]: create new tmux window" \
+    tabnew -params .. -command-completion %{
+        tmux-terminal-window kak -c %val{session} -e "%arg{@}"
+    }
+
+    define-command -docstring "spawn new term" term %sh{
+        echo tmux-terminal-vertical $SHELL
+    }
+}
+
+
 
 # Install kak plugs
 evaluate-commands %sh{
@@ -102,15 +125,17 @@ plug "https://github.com/leperdu/kakboard" ensure config %{
     hook global WinCreate .* %{ kakboard-enable }
 }
 plug "https://github.com/Delapouite/kakoune-i3" ensure config %{
-    define-command split -docstring "split along a horizontal line" %{
-        i3-new-down
-    }
-    define-command vsplit -docstring "split along a vertical line" %{
-        i3-new-right
-    }
-    define-command term -docstring "spawn a new zsh terminal" %sh{
-        echo x11-terminal $SHELL
-        echo quit
+    hook global ModuleLoaded x11 %{
+        define-command split -docstring "split along a horizontal line" %{
+            i3-new-down
+        }
+        define-command vsplit -docstring "split along a vertical line" %{
+            i3-new-right
+        }
+        define-command term -docstring "spawn a new terminal in the current window" %sh{
+            echo x11-terminal $SHELL
+            echo quit
+        }
     }
 }
 plug "https://github.com/pimpale/kak-preservecase" ensure do %{
@@ -122,7 +147,7 @@ plug "https://github.com/dmerejkowsky/kak-subvert" ensure do %{
     cargo install --locked --force --path .
 } noload config %{
     declare-user-mode subvert
-    map global user n ':enter-user-mode subvert<ret>' -docstring 'enter subvert user mode'
+    map global user n ': enter-user-mode subvert<ret>' -docstring 'enter subvert user mode'
     map global subvert c '<esc>|kak-subvert camel<ret>' -docstring 'convert to camel case'
     map global subvert k '<esc>|kak-subvert kebab<ret>' -docstring 'convert to kebab case'
     map global subvert p '<esc>|kak-subvert pascal<ret>' -docstring 'convert to pascal case'
@@ -132,6 +157,14 @@ plug "https://github.com/dmerejkowsky/kak-subvert" ensure do %{
     map global subvert t '<esc>|kak-subvert train<ret>' -docstring 'convert to train case'
     map global subvert T '<esc>|kak-subvert title<ret>' -docstring 'convert to title case'
     map global subvert u '<esc>|kak-subvert ugly<ret>' -docstring 'convert to ugly case'
+}
+plug "https://github.com/h-youhei/kakoune-surround" ensure config %{
+    declare-user-mode surround
+    map global user r ': enter-user-mode surround<ret>' -docstring 'enter surround user mode'
+    map global surround s ': surround<ret>' -docstring 'surround'
+    map global surround c ': change-surround<ret>' -docstring 'change'
+    map global surround d ': delete-surround<ret>' -docstring 'delete'
+    map global surround t ': select-surrounding-tag<ret>' -docstring 'select tag'
 }
 plug "https://github.com/ul/kak-lsp" ensure do %{
     cargo install --locked --force --path .
@@ -149,7 +182,7 @@ plug "https://github.com/ul/kak-lsp" ensure do %{
     define-command lsp-restart -docstring 'restart lsp server' %{ lsp-stop; lsp-start }
     hook global WinSetOption filetype=(c|cpp|rust|javascript|typescript|python|json|css|html|java|latex) %{
         set-option window lsp_auto_highlight_references true
-        set-option window lsp_hover_anchor false
+        set-option window lsp_hover_anchor true
         lsp-auto-hover-disable
         echo -debug "Enabling LSP for filtetype %opt{filetype}"
         lsp-enable-window

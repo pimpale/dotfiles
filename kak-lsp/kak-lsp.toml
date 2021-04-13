@@ -37,7 +37,8 @@ readonly = "default+d"
 [language.rust]
 filetypes = ["rust"]
 roots = ["Cargo.toml"]
-command = "rls"
+command = "rustup"
+args = ["run", "nightly", "rust-analyzer"]
 offset_encoding = "utf-8"
 
 [language.rust.initialization_options]

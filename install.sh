@@ -20,7 +20,7 @@ install i3status
 install zathura
 install rofi
 install dunst
-install termite
+install alacritty
 install vis
 install picom
 install tmux

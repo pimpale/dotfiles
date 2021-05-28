@@ -16,4 +16,8 @@ set LC_CTYPE "en_US.UTF-8"
 
 set fish_greeting ""
 
+function e
+    $EDITOR $argv
+end
+
 fzf_key_bindings

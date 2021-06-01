@@ -1,4 +1,4 @@
-snippet_support = true
+snippet_support = false
 verbosity = 2
 
 [semantic_scopes]
@@ -37,8 +37,6 @@ readonly = "default+d"
 [language.rust]
 filetypes = ["rust"]
 roots = ["Cargo.toml"]
-# command = "rustup"
-# args = ["run", "nightly", "rust-analyzer"]
 command = "rls"
 offset_encoding = "utf-8"
 
@@ -72,6 +70,12 @@ roots = ["package.json"]
 command = "npx"
 args = ["--quiet", "vscode-json-languageserver",  "--stdio"]
 
+[language.yaml]
+filetypes = ["yaml"]
+roots = [".git"]
+command = "npx"
+args = ["--quiet", "yaml-language-server", "--stdio"]
+
 [language.css]
 filetypes = ["css"]
 roots = ["package.json"]
@@ -81,8 +85,8 @@ args = ["--quiet", "vscode-css-languageserver-bin", "--stdio"]
 [language.html]
 filetypes = ["html"]
 roots = ["package.json"]
-command = "html-languageserver"
-args = ["--quiet", "--stdio"]
+command = "npx"
+args = ["html-languageserver", "--quiet", "--stdio"]
 
 [language.java]
 filetypes = ["java"]

@@ -1,4 +1,0 @@
-#!/bin/bash
-
-grep -rli $1 * | xargs -i@ sed -i $2 @
-

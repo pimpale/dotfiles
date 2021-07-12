@@ -44,7 +44,6 @@ bindsym $mod+Shift+c exec "gnome-screenshot -i"
 
 # App shortcuts
 bindsym $mod+Shift+w exec "firefox"
-bindsym $mod+w exec "surf"
 
 # move focus:
 bindsym $mod+Left focus left
@@ -122,7 +121,7 @@ bindsym $mod+shift+g [floating] scratchpad show
 bindsym $mod+Shift+r restart
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-msg exit"
+bindsym $mod+Shift+z exec "i3-msg exit"
 
 # lock
 bindsym $mod+e exec i3lock -i ~/dotfiles/assets/jupiter.png
@@ -210,6 +209,7 @@ bindsym XF86AudioMute exec amixer sset Master 0% && pkill -RTMIN+1 i3blocks
 exec amixer sset Master 0% && pkill -RTMIN+1 i3blocks
 exec --no-startup-id "fcitx-autostart"
 exec --no-startup-id "dunst"
+exec --no-startup-id "systembus-notify"
 exec --no-startup-id "nm-applet"
 exec --no-startup-id "blueman-applet"
 exec --no-startup-id "nitrogen --restore"

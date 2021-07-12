@@ -40,24 +40,6 @@ map global normal <esc> <space> -docstring "clear selections"
 # enter into command mode with leader e
 map global user <space> ':' -docstring "enter command"
 
-
-# from kakoune-text-objects, but mapped to v instead like vim
-try %{ declare-user-mode selectors }
-map global normal 'v' ': enter-user-mode selectors<ret>' -docstring 'selectors…'
-map global selectors 'u' '*%s<ret>' -docstring 'select all'
-map global selectors 'i' '<a-i>' -docstring 'select inside object <a-i>'
-map global selectors 'a' '<a-a>' -docstring 'select outside object <a-a>'
-map global selectors 'j' '<a-[>' -docstring 'select inner object start <a-[>'
-map global selectors 'k' '<a-]>' -docstring 'select inner object end <a-]>'
-map global selectors 'J' '<a-{>' -docstring 'extend inner object start <a-{>'
-map global selectors 'K' '<a-}>' -docstring 'extend inner object end <a-}>'
-map global selectors 'h' '[' -docstring 'select object start ['
-map global selectors 'l' ']' -docstring 'select object end ]'
-map global selectors 'H' '{' -docstring 'extend object start {'
-map global selectors 'L' '}' -docstring 'extend object end }'
-map global normal '%' nop
-
-
 # Typos with writing
 define-command W -docstring "miscapped write" %{ write }
 define-command Wa -docstring "miscapped write" %{ write-all }
@@ -120,7 +102,25 @@ plug  "https://github.com/ftonneau/wordcount.kak" ensure
 plug "https://github.com/insipx/kak-crosshairs" ensure config %{
     crosshairs
 }
-plug "https://github.com/delapouite/kakoune-text-objects" ensure
+plug "https://github.com/delapouite/kakoune-text-objects" ensure config %{
+    # from kakoune-text-objects, but mapped to v instead like vim
+    try %{ declare-user-mode selectors }
+    map global normal 'v' ': enter-user-mode selectors<ret>' -docstring 'selectors…'
+    map global selectors 'u' '*%s<ret>' -docstring 'select all'
+    map global selectors 'i' '<a-i>' -docstring 'select inside object <a-i>'
+    map global selectors 'a' '<a-a>' -docstring 'select outside object <a-a>'
+    map global selectors 'j' '<a-[>' -docstring 'select inner object start <a-[>'
+    map global selectors 'k' '<a-]>' -docstring 'select inner object end <a-]>'
+    map global selectors 'J' '<a-{>' -docstring 'extend inner object start <a-{>'
+    map global selectors 'K' '<a-}>' -docstring 'extend inner object end <a-}>'
+    map global selectors 'h' '[' -docstring 'select object start ['
+    map global selectors 'l' ']' -docstring 'select object end ]'
+    map global selectors 'H' '{' -docstring 'extend object start {'
+    map global selectors 'L' '}' -docstring 'extend object end }'
+    map global normal '%' nop
+
+    map global object 'l'     '<esc>: text-object-line<ret>'               -docstring 'line'
+}
 plug "https://github.com/leperdu/kakboard" ensure config %{
     hook global WinCreate .* %{ kakboard-enable }
 }
@@ -148,15 +148,15 @@ plug "https://github.com/dmerejkowsky/kak-subvert" ensure do %{
 } noload config %{
     declare-user-mode subvert
     map global user n ': enter-user-mode subvert<ret>' -docstring 'enter subvert user mode'
-    map global subvert c '<esc>|kak-subvert camel<ret>' -docstring 'convert to camel case'
-    map global subvert k '<esc>|kak-subvert kebab<ret>' -docstring 'convert to kebab case'
-    map global subvert p '<esc>|kak-subvert pascal<ret>' -docstring 'convert to pascal case'
-    map global subvert . '<esc>|kak-subvert sentence<ret>' -docstring 'convert to sentence case'
-    map global subvert s '<esc>|kak-subvert snake<ret>' -docstring 'convert to snake case'
-    map global subvert S '<esc>|kak-subvert screaming<ret>' -docstring 'convert to screaming case'
-    map global subvert t '<esc>|kak-subvert train<ret>' -docstring 'convert to train case'
-    map global subvert T '<esc>|kak-subvert title<ret>' -docstring 'convert to title case'
-    map global subvert u '<esc>|kak-subvert ugly<ret>' -docstring 'convert to ugly case'
+    map global subvert c '<esc>| kak-subvert camel<ret>' -docstring 'convert to camel case'
+    map global subvert k '<esc>| kak-subvert kebab<ret>' -docstring 'convert to kebab case'
+    map global subvert p '<esc>| kak-subvert pascal<ret>' -docstring 'convert to pascal case'
+    map global subvert . '<esc>| kak-subvert sentence<ret>' -docstring 'convert to sentence case'
+    map global subvert s '<esc>| kak-subvert snake<ret>' -docstring 'convert to snake case'
+    map global subvert S '<esc>| kak-subvert screaming<ret>' -docstring 'convert to screaming case'
+    map global subvert t '<esc>| kak-subvert train<ret>' -docstring 'convert to train case'
+    map global subvert T '<esc>| kak-subvert title<ret>' -docstring 'convert to title case'
+    map global subvert u '<esc>| kak-subvert ugly<ret>' -docstring 'convert to ugly case'
 }
 plug "https://github.com/h-youhei/kakoune-surround" ensure config %{
     declare-user-mode surround

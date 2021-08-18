@@ -1,6 +1,8 @@
 set PATH $HOME/bin $PATH
 set PATH $HOME/.local/bin $PATH
 set PATH $HOME/.cargo/bin $PATH
+set PATH $HOME/.yarn/bin $PATH
+
 set PATH $HOME/dotfiles/bin $PATH
 
 set ANDROID_HOME $HOME/Android/Sdk

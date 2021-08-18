@@ -186,6 +186,7 @@ bar {
 
 # floating windows
 for_window [class="Pavucontrol"] floating enable
+for_window [class="zoom"] floating enable
 for_window [class="Qemu-system-x86_64"] floating enable
 for_window [title="FLOATING"] floating enable, move position center
 # Multimedia Keys

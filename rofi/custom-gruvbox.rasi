@@ -98,7 +98,11 @@ element-icon {
     text-color:       inherit;
 }
 window {
-    padding:          300;
+    anchor:           north;
+    location:         north;
+    padding:          20ch;
+    width:            100%;    
+    height:           100%;    
     background-color: var(background);
     border:           0;
 }

@@ -1,5 +1,4 @@
 configuration {
   font: "terminus bold 14";
-  hide-scrollbar: true;
   theme: "custom-gruvbox";
 }

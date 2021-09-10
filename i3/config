@@ -198,16 +198,15 @@ bindsym $mod+Shift+equal exec dotfiles-increase-backlight 5 # increase screen br
 bindsym $mod+Shift+minus exec dotfiles-decrease-backlight 5 # decrease screen brightness
 
 # volume
-bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 2%+ && pkill -RTMIN+1 i3blocks
-bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 2%- && pkill -RTMIN+1 i3blocks
-bindsym $mod+equal exec amixer -D pulse sset Master 2%+ && pkill -RTMIN+1 i3blocks
-bindsym $mod+minus exec amixer -D pulse sset Master 2%- && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioRaiseVolume exec pamixer -i 2 && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioLowerVolume exec pamixer -d 2 && pkill -RTMIN+1 i3blocks
+bindsym $mod+equal exec pamixer -i 2 && pkill -RTMIN+1 i3blocks
+bindsym $mod+minus exec pamixer -d 2 && pkill -RTMIN+1 i3blocks
 
 # mute
-bindsym XF86AudioMute exec amixer sset Master 0% && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioMute exec pamixer -t && pkill -RTMIN+1 i3blocks
 
 # Autostart apps
-exec amixer sset Master 0% && pkill -RTMIN+1 i3blocks
 exec --no-startup-id "fcitx-autostart"
 exec --no-startup-id "dunst"
 exec --no-startup-id "systembus-notify"

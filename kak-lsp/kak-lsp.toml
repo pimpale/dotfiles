@@ -11,6 +11,9 @@ args = ["run","nightly", "rls"]
 #args = ["run","nightly", "rust-analyzer"]
 offset_encoding = "utf-8"
 
+[language.rust.settings]
+rust.clippy_preference = "on"
+
 [language.c_cpp]
 filetypes = ["c", "cpp"]
 roots = ["compile_flags.txt", "compile_commands.json"]

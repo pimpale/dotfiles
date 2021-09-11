@@ -194,10 +194,6 @@ plug "https://github.com/ul/kak-lsp" ensure do %{
         set-option window lsp_auto_highlight_references false
     }
 
-    hook global WinSetOption filetype=(rust) %{
-        set-option window lsp_server_configuration rust.clippy_preference="on"
-    }
-
     hook global WinSetOption filetype=(latex) %{
         # Line Wrapping
         add-highlighter window/ wrap -indent -width 120

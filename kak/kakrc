@@ -181,7 +181,7 @@ plug "https://github.com/ul/kak-lsp" ensure do %{
         set-option window lsp_auto_highlight_references true
         set-option window lsp_hover_anchor true
         lsp-auto-hover-disable
-        echo -debug "Enabling LSP for filtetype %opt{filetype}"
+        echo -debug "Enabling LSP for filetype %opt{filetype}"
 
         lsp-enable-window
 

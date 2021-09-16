@@ -2,6 +2,7 @@ env:
   TERM: alacritty
 
 font:
+  size: 8.0
   normal:
     family: Terminus
 

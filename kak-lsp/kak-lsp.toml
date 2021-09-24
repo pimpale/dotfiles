@@ -7,7 +7,8 @@ verbosity = 2
 filetypes = ["rust"]
 roots = ["Cargo.toml"]
 command = "rustup"
-args = ["run","nightly", "rls"]
+args = ["run","nightly", "rust-analyzer"]
+# args = ["run","nightly", "rust-analyzer"]
 offset_encoding = "utf-8"
 
 [language.rust.settings]
@@ -67,6 +68,12 @@ args = ["--add-modules=ALL-SYSTEM", "--add-opens", "java.base/java.util=ALL-UNNA
 filetypes = ["latex"]
 roots = [".git"]
 command = "texlab"
+
+[language.ocaml]
+filetypes = ["ocaml"]
+roots = ["Makefile", "opam", "*.opam", "dune"]
+command = "esy"
+args = ["ocamllsp"]
 
 # Semantic tokens support
 # See https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_semanticTokens

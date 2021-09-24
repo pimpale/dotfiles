@@ -171,16 +171,13 @@ plug "https://github.com/ul/kak-lsp" ensure do %{
 } config %{
     # uncomment to enable debugging
     eval %sh{echo ${kak_opt_lsp_cmd} >> /tmp/kak-lsp.log}
-    set global lsp_cmd "kak-lsp -vv -s %val{session} --log /tmp/kak-lsp.log"
+    set global lsp_cmd "kak-lsp -vvv -s %val{session} --log /tmp/kak-lsp.log"
 
     set-option global lsp_diagnostic_line_error_sign "!"
     set-option global lsp_diagnostic_line_warning_sign "?"
 
     define-command lsp-restart -docstring 'restart lsp server' %{ lsp-stop; lsp-start }
-    hook global WinSetOption filetype=(c|cpp|rust|javascript|typescript|python|json|yaml|css|html|java|latex) %{
-        set-option window lsp_auto_highlight_references true
-        set-option window lsp_hover_anchor true
-        lsp-auto-hover-disable
+    hook global WinSetOption filetype=(c|cpp|rust|javascript|typescript|python|json|yaml|css|html|ocaml|java|latex) %{
         echo -debug "Enabling LSP for filetype %opt{filetype}"
 
         lsp-enable-window
@@ -191,7 +188,6 @@ plug "https://github.com/ul/kak-lsp" ensure do %{
     }
 
     hook global WinSetOption filetype=(json|yaml) %{
-        set-option window lsp_auto_highlight_references false
     }
 
     hook global WinSetOption filetype=(latex) %{

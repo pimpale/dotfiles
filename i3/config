@@ -16,8 +16,8 @@ set $mod Mod4
 font pango:Terminus 18px
 
 # thin borders
-hide_edge_borders both
-new_window 1pixel
+default_border none
+
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
@@ -29,7 +29,7 @@ new_window 1pixel
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec dotfiles-default-terminal
+bindsym $mod+Return exec "dotfiles-default-terminal"
 bindsym $mod+Shift+Return exec alacritty -t 'FLOATING'
 
 
@@ -38,7 +38,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+Shift+x --release exec --no-startup-id xkill
 #
 # start a program launcher
-bindsym $mod+space exec  dotfiles-application-manager
+bindsym $mod+space exec  "dotfiles-application-manager"
 
 bindsym $mod+Shift+c exec "gnome-screenshot -i"
 
@@ -124,7 +124,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+z exec "i3-msg exit"
 
 # lock
-bindsym $mod+e exec i3lock -i ~/dotfiles/assets/jupiter.png
+bindsym $mod+e exec dotfiles-lockscreen -i ~/dotfiles/assets/jupiter.png
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -170,7 +170,6 @@ client.urgent           $urgent-bg-color   $urgent-bg-color   $text-color       
 # finds out, if available)
 
 bar {
-  i3bar_command i3bar -t
   status_command i3status
   position top
   separator_symbol "|"
@@ -211,6 +210,5 @@ exec --no-startup-id "fcitx-autostart"
 exec --no-startup-id "dunst"
 exec --no-startup-id "systembus-notify"
 exec --no-startup-id "nm-applet"
-exec --no-startup-id "blueman-applet"
 exec --no-startup-id "nitrogen --restore"
-exec --no-startup-id "xss-lock -- i3lock -n -i ~/dotfiles/assets/jupiter.png"
+exec --no-startup-id "xss-lock -- dotfiles-lockscreen -n -i ~/dotfiles/assets/jupiter.png"

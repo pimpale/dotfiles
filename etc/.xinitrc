@@ -27,13 +27,7 @@ if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
 fi
 
-# start some nice programs
-export XMODIFIERS=@im=fcitx
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-
 setxkbmap -option compose:menu
 
-xsetroot -cursor_name left_ptr
 picom -b
 exec i3

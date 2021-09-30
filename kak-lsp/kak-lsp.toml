@@ -71,9 +71,15 @@ command = "texlab"
 
 [language.ocaml]
 filetypes = ["ocaml"]
-roots = ["Makefile", "opam", "*.opam", "dune"]
+roots = ["Makefile", "opam", "*.opam", "dune", "_esy"]
 command = "esy"
 args = ["ocamllsp"]
+
+[language.haskell]
+filetypes = ["haskell"]
+roots = ["Setup.hs", "stack.yaml", "*.cabal"]
+command = "haskell-language-server-wrapper"
+args = ["--lsp"]
 
 # Semantic tokens support
 # See https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_semanticTokens

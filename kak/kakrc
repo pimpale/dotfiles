@@ -98,7 +98,7 @@ plug "https://github.com/robertmeta/plug.kak" noload config %{
     set-option global plug_install_dir %sh{ echo $HOME/.kakplugins }
 }
 plug "https://github.com/occivink/kakoune-sudo-write" ensure
-plug  "https://github.com/ftonneau/wordcount.kak" ensure
+plug "https://github.com/ftonneau/wordcount.kak" ensure
 plug "https://github.com/insipx/kak-crosshairs" ensure config %{
     crosshairs
 }
@@ -177,7 +177,7 @@ plug "https://github.com/ul/kak-lsp" ensure do %{
     set-option global lsp_diagnostic_line_warning_sign "?"
 
     define-command lsp-restart -docstring 'restart lsp server' %{ lsp-stop; lsp-start }
-    hook global WinSetOption filetype=(c|cpp|rust|javascript|typescript|python|json|yaml|css|html|ocaml|java|latex) %{
+    hook global WinSetOption filetype=(c|cpp|rust|javascript|typescript|python|json|yaml|css|html|ocaml|java|latex|haskell) %{
         echo -debug "Enabling LSP for filetype %opt{filetype}"
 
         lsp-enable-window

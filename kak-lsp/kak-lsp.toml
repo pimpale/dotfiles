@@ -7,8 +7,8 @@ verbosity = 2
 filetypes = ["rust"]
 roots = ["Cargo.toml"]
 command = "rustup"
-args = ["run","nightly", "rust-analyzer"]
-# args = ["run","nightly", "rust-analyzer"]
+#args = ["run","nightly", "rust-analyzer"]
+args = ["run","nightly", "rls"]
 offset_encoding = "utf-8"
 
 [language.rust.settings]

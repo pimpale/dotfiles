@@ -16,6 +16,7 @@ install_to etc/.xinitrc .
 
 # regulars
 install nvim
+install helix
 install kak
 install kak-lsp
 install i3

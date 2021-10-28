@@ -1,0 +1,13 @@
+[[language]]
+name = "rust"
+scope = "source.rust"
+injection-regex = "rust"
+file-types = ["rs"]
+roots = []
+auto-format = true
+comment-token = "//"
+language-server = { command = "rls" }
+indent = { tab-width = 4, unit = "    " }
+[language.config]
+cargo = { loadOutDirsFromCheck = true }
+procMacro = { enable = false }

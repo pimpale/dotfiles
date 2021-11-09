@@ -182,6 +182,14 @@ plug "https://github.com/ul/kak-lsp" ensure do %{
         map window user "l" ": enter-user-mode lsp<ret>" -docstring "LSP mode"
         map window lsp "n" "<esc>: lsp-find-error --include-warnings<ret>" -docstring "find next error or warning"
         map window lsp "p" "<esc>: lsp-find-error --previous --include-warnings<ret>" -docstring "find previous error or warning"
+
+
+        hook window -group semantic-tokens BufReload .* lsp-semantic-tokens
+        hook window -group semantic-tokens NormalIdle .* lsp-semantic-tokens
+        hook window -group semantic-tokens InsertIdle .* lsp-semantic-tokens
+        hook -once -always window WinSetOption filetype=.* %{
+          remove-hooks window semantic-tokens
+        }
     }
 
     hook global WinSetOption filetype=(json|yaml) %{

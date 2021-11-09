@@ -7,8 +7,8 @@ verbosity = 2
 filetypes = ["rust"]
 roots = ["Cargo.toml"]
 command = "rustup"
-#args = ["run","nightly", "rust-analyzer"]
-args = ["run","nightly", "rls"]
+args = ["run","nightly", "rust-analyzer"]
+#args = ["run","nightly", "rls"]
 offset_encoding = "utf-8"
 
 [language.rust.settings]
@@ -124,14 +124,9 @@ face = "type"
 
 [[semantic_tokens]]
 token = "variable"
-face = "default+d"
-modifiers = ["readonly"]
-
-[[semantic_tokens]]
-token = "variable"
-face = "default+d"
-modifiers = ["constant"]
-
-[[semantic_tokens]]
-token = "variable"
 face = "variable"
+
+[[semantic_tokens]]
+token = "variable"
+face = "consumed_variable"
+modifiers = ["consuming"]

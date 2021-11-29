@@ -1,4 +1,5 @@
 configuration {
   font: "terminus bold 14";
-  theme: "custom-gruvbox";
 }
+
+@theme "custom-gruvbox"

@@ -14,13 +14,11 @@ unlet autoload_plug_path
 call plug#begin('~/.nvim/plugins/')
 
 Plug 'airblade/vim-rooter'
-Plug 'digitaltoad/vim-pug'
 Plug 'junegunn/vim-easy-align'
 Plug 'lambdalisue/suda.vim'
 Plug 'lervag/vimtex'
 Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'gf3/peg.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'mg979/vim-visual-multi'
 Plug 'tikhomirov/vim-glsl'
@@ -29,7 +27,6 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fireplace'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-scripts/ebnf.vim'
 
 call plug#end()
 

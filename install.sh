@@ -30,3 +30,4 @@ install picom
 install tmux
 install fish
 install sway
+install nix

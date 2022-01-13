@@ -127,6 +127,10 @@ token = "variable"
 face = "variable"
 
 [[semantic_tokens]]
+token = "parameter"
+face = "variable"
+
+[[semantic_tokens]]
 token = "variable"
 face = "consumed_variable"
 modifiers = ["consuming"]

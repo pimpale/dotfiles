@@ -205,7 +205,7 @@ bindsym $mod+minus exec pamixer -d 2 && pkill -RTMIN+1 i3blocks
 bindsym XF86AudioMute exec pamixer -t && pkill -RTMIN+1 i3blocks
 
 # Autostart apps
-exec --no-startup-id "fcitx-autostart"
+exec --no-startup-id "fcitx5-autostart"
 exec --no-startup-id "dunst"
 exec --no-startup-id "systembus-notify"
 exec --no-startup-id "nm-applet"

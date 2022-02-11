@@ -1,0 +1,214 @@
+# It will not be overwritten, so edit it as you like.
+#
+# Should you change your keyboard layout some time, delete
+# this file and re-run i3-config-wizard(1).
+#
+
+# i3 config file (v4)
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+
+set $mod Mod4
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:Terminus 18px
+
+# thin borders
+default_border none
+
+# Before i3 v4.8, we used to recommend this one as the default:
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# The font above is very space-efficient, that is, it looks good, sharp and
+# clear in small sizes. However, its unicode glyph coverage is limited, the old
+# X core fonts rendering does not support right-to-left and this being a bitmap
+# font, it doesn’t scale on retina/hidpi displays.
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec "dotfiles-default-terminal"
+bindsym $mod+Shift+Return exec alacritty -t 'FLOATING'
+
+
+# kill focused window
+bindsym $mod+Shift+q kill
+bindsym $mod+Shift+x --release exec --no-startup-id xkill
+#
+# start a program launcher
+bindsym $mod+space exec  "dotfiles-application-manager"
+
+bindsym $mod+Shift+c exec "gnome-screenshot -i"
+
+# App shortcuts
+bindsym $mod+Shift+w exec "firefox"
+
+# move focus:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+
+# move windows:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# splits
+bindsym $mod+v layout splitv
+bindsym $mod+s layout splith
+
+bindsym $mod+Shift+v split v
+bindsym $mod+Shift+s split h
+
+# tabs
+bindsym $mod+Shift+t layout toggle tabbed splith
+
+# toggle tiling / floating
+bindsym $mod+Shift+f floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+f focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+bindsym $mod+d focus child
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# switch workspaces arrow keys
+bindsym $mod+k workspace next
+bindsym $mod+j workspace prev
+
+# switch workspaces monitor arrow keys
+bindsym $mod+Shift+m exec "arandr"
+bindsym $mod+Shift+k move workspace to output right
+bindsym $mod+Shift+j move workspace to output left
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# move all floating windows to the scratchpad
+bindsym $mod+g [floating] move scratchpad
+bindsym $mod+shift+g [floating] scratchpad show
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+z exec "i3-msg exit"
+
+# lock
+bindsym $mod+e exec dotfiles-lockscreen -i ~/dotfiles/assets/jupiter.png
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym ntilde resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+set $bg-color            #36393f
+set $inactive-bg-color   #36393f
+set $text-color          #ffffff
+set $inactive-text-color #888888
+set $urgent-bg-color     #e53935
+set $indicator-color     #a0a0a0
+
+# set window colors
+#                       border             background         text                 indicator
+client.focused          $bg-color          $bg-color          $text-color          $indicator-color
+client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color $indicator-color
+client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color $indicator-color
+client.urgent           $urgent-bg-color   $urgent-bg-color   $text-color          $indicator-color
+
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+
+bar {
+  icon_theme Adwaita
+  status_command i3status
+  position top
+  separator_symbol "|"
+  colors {
+    background $bg-color
+        separator $inactive-text-color
+    #                  border             background         text
+    focused_workspace  $bg-color          $bg-color          $text-color
+    inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+    urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+  }
+}
+
+# floating windows
+for_window [class="Pavucontrol"] floating enable
+for_window [class="zoom"] floating enable
+for_window [class="Qemu-system-x86_64"] floating enable
+for_window [title="FLOATING"] floating enable, move position center
+# Multimedia Keys
+
+
+bindsym XF86MonBrightnessUp exec dotfiles-increase-backlight 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec dotfiles-decrease-backlight 5 # decrease screen brightness
+bindsym $mod+Shift+equal exec dotfiles-increase-backlight 5 # increase screen brightness
+bindsym $mod+Shift+minus exec dotfiles-decrease-backlight 5 # decrease screen brightness
+
+# volume
+bindsym XF86AudioRaiseVolume exec pamixer -i 2 && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioLowerVolume exec pamixer -d 2 && pkill -RTMIN+1 i3blocks
+bindsym $mod+equal exec pamixer -i 2 && pkill -RTMIN+1 i3blocks
+bindsym $mod+minus exec pamixer -d 2 && pkill -RTMIN+1 i3blocks
+
+# mute
+bindsym XF86AudioMute exec pamixer -t && pkill -RTMIN+1 i3blocks
+
+# Autostart apps
+exec --no-startup-id "fcitx5"
+exec --no-startup-id "dunst"
+exec --no-startup-id "systembus-notify"
+exec --no-startup-id "nm-applet"
+exec --no-startup-id "nitrogen --restore"
+exec --no-startup-id "xss-lock -- dotfiles-lockscreen -n -i ~/dotfiles/assets/jupiter.png"

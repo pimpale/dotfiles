@@ -169,6 +169,7 @@ client.urgent           $urgent-bg-color   $urgent-bg-color   $text-color       
 # finds out, if available)
 
 bar {
+ # icon_theme Adwaita
   status_command i3status
   position top
   separator_symbol "|"

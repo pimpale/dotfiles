@@ -133,8 +133,20 @@ plug "https://github.com/Delapouite/kakoune-i3" ensure config %{
             i3-new-right
         }
         define-command term -docstring "spawn a new terminal in the current window" %sh{
-            echo x11-terminal $SHELL
-            echo quit
+            echo terminal $SHELL
+        }
+    }
+}
+plug "https://github.com/mreppen/kakoune-sway" ensure config %{
+    hook global ModuleLoaded wayland %{
+        define-command split -docstring "split along a horizontal line" %{
+            sway-new-down
+        }
+        define-command vsplit -docstring "split along a vertical line" %{
+            sway-new-right
+        }
+        define-command term -docstring "spawn a new terminal in the current window" %sh{
+            echo terminal $SHELL
         }
     }
 }

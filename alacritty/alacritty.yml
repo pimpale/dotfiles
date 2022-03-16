@@ -4,7 +4,8 @@ env:
 font:
   size: 8.0
   normal:
-    family: Terminus
+    family: Comic Mono
+#    family:
 
 colors:
   primary:

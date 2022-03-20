@@ -5,7 +5,7 @@ font:
   size: 8.0
   normal:
     family: Comic Mono
-#    family:
+#    family: Terminus
 
 colors:
   primary:

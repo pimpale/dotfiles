@@ -117,8 +117,10 @@ map global selectors 'l' ']' -docstring 'select object end ]'
 map global selectors 'H' '{' -docstring 'extend object start {'
 map global selectors 'L' '}' -docstring 'extend object end }'
 map global normal '%' nop
-map global object 'l'     '<esc>: text-object-line<ret>'               -docstring 'line'
 
+
+plug 'https://github.com/delapouite/kakoune-text-objects' ensure config %{
+}
 plug "https://github.com/leperdu/kakboard" ensure config %{
     hook global WinCreate .* %{ kakboard-enable }
 }
@@ -151,7 +153,7 @@ plug "https://github.com/mreppen/kakoune-sway" ensure config %{
 plug "https://github.com/pimpale/kak-preservecase" ensure do %{
     cargo install --locked --force --path .
 } config %{
-    map global user s ':preserve-case ' -docstring 'case sensitive replace'
+    map global user s ': preserve-case ' -docstring 'case sensitive replace'
 }
 plug "https://github.com/dmerejkowsky/kak-subvert" ensure do %{
     cargo install --locked --force --path .

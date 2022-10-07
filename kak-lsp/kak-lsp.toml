@@ -1,4 +1,4 @@
-snippet_support = false
+#snippet_support = false
 verbosity = 2
 
 [server]
@@ -80,6 +80,11 @@ filetypes = ["haskell"]
 roots = ["Setup.hs", "stack.yaml", "*.cabal"]
 command = "haskell-language-server-wrapper"
 args = ["--lsp"]
+
+[language.zig]
+filetypes = ["zig"]
+roots = ["build.zig"]
+command = "zls"
 
 # Semantic tokens support
 # See https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_semanticTokens

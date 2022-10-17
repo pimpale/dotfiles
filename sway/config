@@ -202,6 +202,9 @@ bindsym XF86AudioLowerVolume exec pamixer -d 2 && pkill -RTMIN+1 i3blocks
 bindsym $mod+equal exec pamixer -i 2 && pkill -RTMIN+1 i3blocks
 bindsym $mod+minus exec pamixer -d 2 && pkill -RTMIN+1 i3blocks
 
+# Play
+bindsym XF86AudioPlay exec playerctl play-pause
+
 # mute
 bindsym XF86AudioMute exec pamixer -t && pkill -RTMIN+1 i3blocks
 

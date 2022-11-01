@@ -33,10 +33,6 @@ hook global InsertCompletionHide .* %{
   unmap window insert <s-tab> <c-p>
 }
 
-# leader mode starts with space instead of comma
-map global normal <space> , -docstring "leader"
-map global normal <esc> <space> -docstring "clear selections"
-
 # enter into command mode with leader e
 map global user <space> ':' -docstring "enter command"
 

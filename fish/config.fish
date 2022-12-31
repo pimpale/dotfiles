@@ -1,7 +1,7 @@
 set -x PATH $HOME/bin $PATH
 set -x PATH $HOME/.local/bin $PATH
 set -x PATH $HOME/.cargo/bin $PATH
-set -x PATH $HOME/.yarn/bin $PATH
+set -x PATH /opt/cuda/bin $PATH
 
 set -x PATH $HOME/dotfiles/bin $PATH
 

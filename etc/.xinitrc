@@ -31,5 +31,6 @@ setxkbmap -option compose:menu
 
 xinput set-prop 13 343 0
 
+prime-offload
 picom -b
 exec i3

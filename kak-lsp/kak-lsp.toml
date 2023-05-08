@@ -86,6 +86,13 @@ filetypes = ["zig"]
 roots = ["build.zig"]
 command = "zls"
 
+[language.lean]
+filetypes = ["lean"]
+roots = ["lakefile.lean", "lake-manifest.json"]
+command = "lake"
+args = ["serve"]
+
+
 # Semantic tokens support
 # See https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_semanticTokens
 # for the default list of tokens and modifiers.

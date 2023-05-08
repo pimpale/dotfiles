@@ -27,8 +27,6 @@ if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
 fi
 
-setxkbmap -option compose:menu
-
 xinput set-prop 13 343 0
 
 prime-offload

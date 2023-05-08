@@ -1,6 +1,7 @@
 set -x PATH $HOME/bin $PATH
 set -x PATH $HOME/.local/bin $PATH
 set -x PATH $HOME/.cargo/bin $PATH
+set -x PATH $HOME/.elan/toolchains/leanprover--lean4---nightly/bin $PATH
 set -x PATH /opt/cuda/bin $PATH
 
 set -x PATH $HOME/dotfiles/bin $PATH
@@ -23,3 +24,11 @@ function e
 end
 
 fzf_key_bindings
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+if test -f /opt/miniconda3/bin/conda
+    eval /opt/miniconda3/bin/conda "shell.fish" "hook" $argv | source
+end
+# <<< conda initialize <<<
+

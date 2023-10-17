@@ -208,6 +208,9 @@ bindsym XF86AudioPlay exec playerctl play-pause
 # mute
 bindsym XF86AudioMute exec pamixer -t && pkill -RTMIN+1 i3blocks
 
+# add status
+bindsym $mod+o exec killall -SIGUSR1 statusbar
+
 # Autostart apps
 exec --no-startup-id "fcitx5"
 exec --no-startup-id "dunst"

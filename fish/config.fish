@@ -3,6 +3,7 @@ set -x PATH $HOME/.local/bin $PATH
 set -x PATH $HOME/.cargo/bin $PATH
 set -x PATH $HOME/.elan/toolchains/leanprover--lean4---nightly/bin $PATH
 set -x PATH /opt/cuda/bin $PATH
+set -x PATH /usr/local/cuda/bin $PATH
 
 set -x PATH $HOME/dotfiles/bin $PATH
 

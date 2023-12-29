@@ -1,7 +1,7 @@
 set -x PATH $HOME/bin $PATH
 set -x PATH $HOME/.local/bin $PATH
 set -x PATH $HOME/.cargo/bin $PATH
-set -x PATH $HOME/.elan/toolchains/leanprover--lean4---nightly/bin $PATH
+set -x PATH $HOME/.elan/bin $PATH
 set -x PATH /opt/cuda/bin $PATH
 set -x PATH /opt/google-cloud-cli/bin $PATH
 set -x PATH /usr/local/cuda/bin $PATH
@@ -24,6 +24,8 @@ set fish_greeting ""
 function e
     $EDITOR $argv
 end
+
+set -x DEBUGINFOD_URLS "https://debuginfod.archlinux.org"
 
 fzf_key_bindings
 

@@ -46,3 +46,12 @@ if test -f /opt/anaconda/bin/conda
 end
 # <<< conda initialize <<<
 end
+
+function ci3
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+if test -f /opt/conda/bin/conda
+    eval /opt/conda/bin/conda "shell.fish" "hook" $argv | source
+end
+# <<< conda initialize <<<
+end

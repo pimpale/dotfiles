@@ -126,6 +126,7 @@ bindsym $mod+Shift+z exec "i3-msg exit"
 bindsym $mod+e exec dotfiles-lockscreen -i ~/dotfiles/assets/jupiter.png
 
 # resize window (you can also use the mouse for that)
+bindsym $mod+r mode "resize"
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
@@ -148,7 +149,12 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-bindsym $mod+r mode "resize"
+# disable all bindings (used for interacting with qemu, vnc, etc)
+bindsym $mod+p mode "passthrough"
+mode "passthrough" {
+    # these bindings trigger when you enter the passthrough mode
+    bindsym $mod+p mode "default"
+}
 
 set $bg-color            #36393f
 set $inactive-bg-color   #36393f

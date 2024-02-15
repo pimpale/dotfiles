@@ -55,3 +55,13 @@ if test -f /opt/conda/bin/conda
 end
 # <<< conda initialize <<<
 end
+
+
+function mi1
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+if test -f /opt/mambaforge/bin/conda
+    eval /opt/mambaforge/bin/conda "shell.fish" "hook" $argv | source
+end
+# <<< conda initialize <<<
+end

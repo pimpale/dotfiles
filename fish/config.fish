@@ -65,3 +65,12 @@ if test -f /opt/mambaforge/bin/conda
 end
 # <<< conda initialize <<<
 end
+
+function mi2
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+if test -f /opt/miniforge3/bin/conda
+    eval /opt/miniforge3/bin/conda "shell.fish" "hook" $argv | source
+end
+# <<< conda initialize <<<
+end

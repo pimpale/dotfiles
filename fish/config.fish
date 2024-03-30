@@ -1,10 +1,10 @@
-set -x PATH $HOME/bin $PATH
 set -x PATH $HOME/.local/bin $PATH
 set -x PATH $HOME/.cargo/bin $PATH
 set -x PATH $HOME/.elan/bin $PATH
 set -x PATH /opt/cuda/bin $PATH
 set -x PATH /opt/google-cloud-cli/bin $PATH
 set -x PATH /usr/local/cuda/bin $PATH
+set -x PATH $HOME/bin $PATH
 
 set -x PATH $HOME/dotfiles/bin $PATH
 

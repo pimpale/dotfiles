@@ -97,8 +97,10 @@ bindsym $mod+j workspace prev
 
 # switch workspaces monitor arrow keys
 bindsym $mod+Shift+m exec "arandr"
-bindsym $mod+Shift+k move workspace to output right
-bindsym $mod+Shift+j move workspace to output left
+bindsym $mod+Shift+h move workspace to output right
+bindsym $mod+Shift+l move workspace to output left
+bindsym $mod+Shift+j move workspace to output down
+bindsym $mod+Shift+k move workspace to output up
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1

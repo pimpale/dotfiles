@@ -34,5 +34,6 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
+dbus-update-activation-environment
 picom -b
 exec i3

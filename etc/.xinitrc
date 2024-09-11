@@ -36,4 +36,8 @@ export XMODIFIERS=@im=fcitx
 
 dbus-update-activation-environment
 picom -b
+
+setxkbmap -option "caps:swapescape" -option "altwin:swap_lalt_lwin"
+
 exec i3
+

@@ -27,7 +27,7 @@ end
 
 set -x DEBUGINFOD_URLS "https://debuginfod.archlinux.org"
 
-fzf_key_bindings
+#fzf_key_bindings
 
 function ci
 # >>> conda initialize >>>

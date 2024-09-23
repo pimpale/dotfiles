@@ -115,6 +115,9 @@ map global selectors 'L' '}' -docstring 'extend object end }'
 map global normal '%' nop
 
 
+map global normal 'm' '<a-j>' -docstring 'merge this line up'
+
+
 plug 'https://github.com/delapouite/kakoune-text-objects' ensure config %{
 }
 plug "https://github.com/leperdu/kakboard" ensure config %{

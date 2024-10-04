@@ -1,7 +1,5 @@
-#snippet_support = false
-verbosity = 2
-
 [server]
+verbosity = 2
 
 [language.rust]
 filetypes = ["rust"]

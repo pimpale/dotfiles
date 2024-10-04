@@ -59,16 +59,20 @@ bindsym $mod+Shift+Right move right
 
 # splits
 bindsym $mod+v layout splitv
-bindsym $mod+s layout splith
+bindsym $mod+h layout splith
 
 bindsym $mod+Shift+v split v
-bindsym $mod+Shift+s split h
+bindsym $mod+Shift+h split h
 
 # tabs
 bindsym $mod+Shift+t layout toggle tabbed splith
 
 # toggle tiling / floating
 bindsym $mod+Shift+f floating toggle
+
+# toggle sticky
+bindsym $mod+s [floating] sticky toggle
+
 
 # change focus between tiling / floating windows
 bindsym $mod+f focus mode_toggle
@@ -97,10 +101,10 @@ bindsym $mod+j workspace prev
 
 # switch workspaces monitor arrow keys
 bindsym $mod+Shift+m exec "arandr"
-bindsym $mod+Shift+h move workspace to output right
-bindsym $mod+Shift+l move workspace to output left
-bindsym $mod+Shift+j move workspace to output down
-bindsym $mod+Shift+k move workspace to output up
+bindsym $mod+Shift+$mod1+h move workspace to output right
+bindsym $mod+Shift+$mod1+j move workspace to output down
+bindsym $mod+Shift+$mod1+k move workspace to output up
+bindsym $mod+Shift+$mod1+l move workspace to output left
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1

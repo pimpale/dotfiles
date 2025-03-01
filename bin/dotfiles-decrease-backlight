@@ -1,5 +1,0 @@
-if [ -x $(which light) ]; then
-	light -U $1
-else
-	xbacklight -dec $1
-fi

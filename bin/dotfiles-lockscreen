@@ -3,5 +3,5 @@
 if [ $XDG_SESSION_TYPE = "wayland" ]; then
   exec swaylock $@
 else
-  exec i3lock $@
+  i3lock --fill $@ || i3lock $@
 fi

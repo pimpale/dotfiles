@@ -13,6 +13,7 @@ install() {
 
 install_to etc/.pam_environment .
 install_to etc/.xinitrc .
+install_to etc/.gitconfig .
 
 # regulars
 install nvim

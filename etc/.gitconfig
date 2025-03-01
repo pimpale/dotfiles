@@ -1,0 +1,18 @@
+[user]
+	email = gpimpale29@gmail.com
+	name = gpi
+[core]
+	pager = cat
+	autocrlf = false
+	editor = kak
+[credential]
+	helper = store
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[pull]
+	rebase = false
+[http]
+	postBuffer = 157286400

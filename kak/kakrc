@@ -184,7 +184,6 @@ plug "https://github.com/ul/kak-lsp" ensure do %{
     eval %sh{echo ${kak_opt_lsp_cmd} >> /tmp/kak-lsp.log}
     set global lsp_cmd "kak-lsp -v -s %val{session} --log /tmp/kak-lsp.log"
 
-    define-command lsp-restart -docstring 'restart lsp server' %{ lsp-stop; lsp-start }
     hook global WinSetOption filetype=(c|cpp|rust|javascript|typescript|python|json|yaml|css|html|zig|ocaml|java|latex|haskell|lean|lean4) %{
         echo -debug "Enabling LSP for filetype %opt{filetype}"
 

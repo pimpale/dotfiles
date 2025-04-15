@@ -58,11 +58,8 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # splits
-bindsym $mod+v layout splitv
-bindsym $mod+h layout splith
-
-bindsym $mod+Shift+v split v
-bindsym $mod+Shift+h split h
+bindsym $mod+v split v
+bindsym $mod+h split h
 
 # tabs
 bindsym $mod+Shift+t layout toggle tabbed splith
@@ -101,10 +98,10 @@ bindsym $mod+j workspace prev
 
 # switch workspaces monitor arrow keys
 bindsym $mod+Shift+m exec "arandr"
-bindsym $mod+Shift+$mod1+h move workspace to output right
-bindsym $mod+Shift+$mod1+j move workspace to output down
-bindsym $mod+Shift+$mod1+k move workspace to output up
-bindsym $mod+Shift+$mod1+l move workspace to output left
+bindsym $mod+Shift+h move workspace to output right
+bindsym $mod+Shift+j move workspace to output down
+bindsym $mod+Shift+k move workspace to output up
+bindsym $mod+Shift+l move workspace to output left
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1

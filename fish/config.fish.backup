@@ -57,6 +57,3 @@ if test -f /opt/conda/bin/conda
 end
 # <<< conda initialize <<<
 end
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/fidgetsinner/tmp/gcloud/google-cloud-sdk/path.fish.inc' ]; . '/home/fidgetsinner/tmp/gcloud/google-cloud-sdk/path.fish.inc'; end

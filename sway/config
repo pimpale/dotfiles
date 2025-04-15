@@ -28,7 +28,7 @@ default_border none
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec "dotfiles-default-terminal"
+bindsym $mod+Return exec "foot"
 bindsym $mod+Shift+Return exec alacritty -t 'FLOATING'
 
 

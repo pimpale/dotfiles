@@ -32,3 +32,4 @@ install tmux
 install fish
 install sway
 install nix
+install hypr

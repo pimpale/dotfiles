@@ -182,6 +182,8 @@ bar {
   status_command i3status
   position top
   separator_symbol "|"
+  wheel_up_cmd nop
+  wheel_down_cmd nop
   colors {
     background $bg-color
         separator $inactive-text-color

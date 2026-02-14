@@ -7,7 +7,7 @@ set -x PATH /opt/google-cloud-cli/bin $PATH
 set -x PATH /usr/local/cuda/bin $PATH
 set -x PATH $HOME/bin $PATH
 set -x PATH $HOME/.pub-cache/bin $PATH
-
+set -x PATH $HOME/nvidia/NVIDIA-Nsight-Graphics-2025.4/host/linux-desktop-nomad-x64 $PATH
 set -x PATH $HOME/dotfiles/bin $PATH
 
 set -x ANDROID_HOME $HOME/Android/Sdk
@@ -80,3 +80,5 @@ end
 set --erase _asdf_shims
 
 end
+
+

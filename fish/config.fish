@@ -82,3 +82,6 @@ set --erase _asdf_shims
 end
 
 
+
+# kimi-code
+fish_add_path -g "/home/fidgetsinner/.kimi-code/bin"

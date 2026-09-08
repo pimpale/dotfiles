@@ -16,3 +16,5 @@
 	rebase = false
 [http]
 	postBuffer = 157286400
+[includeIf "gitdir:~/work/"]
+	path = ~/.gitconfig-work

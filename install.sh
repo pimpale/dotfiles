@@ -4,7 +4,7 @@ pwd="$HOME/dotfiles"
 mkdir "$HOME/.config"
 
 install_to() {
-  ln -sf $opts "$pwd/$1" "$HOME/$2"
+  ln -sfn $opts "$pwd/$1" "$HOME/$2"
 }
 
 install() {

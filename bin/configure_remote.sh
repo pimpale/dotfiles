@@ -49,10 +49,11 @@ sudo=""
 
 # build-essential: cargo needs a C linker to build most crates.
 if ! command -v kak >/dev/null 2>&1 || ! command -v git >/dev/null 2>&1 \
-   || ! command -v cc >/dev/null 2>&1 || ! command -v curl >/dev/null 2>&1; then
+   || ! command -v cc >/dev/null 2>&1 || ! command -v curl >/dev/null 2>&1 \
+   || ! command -v nvtop >/dev/null 2>&1; then
   $sudo apt-get update -qq
   $sudo apt-get install -y -qq --no-install-recommends \
-    kakoune git git-lfs curl ca-certificates build-essential
+    kakoune git git-lfs curl ca-certificates build-essential nvtop
 fi
 
 # Rust toolchain -> ~/.cargo/bin. The installer adds ~/.cargo/bin to
@@ -91,11 +92,23 @@ if [[ -n $hf_tok ]]; then
   echo "==> $host: huggingface token"
   printf '%s' "$hf_tok" | put .cache/huggingface/token 600
   # Some RunPod images point HF_HOME at the volume; cover that too.
-  # Login shell so the pod's env (incl. HF_HOME) is loaded.
-  hf_home=$(rssh 'bash -lc "printf %s \"\${HF_HOME:-}\"" 2>/dev/null' || true)
+  # A login shell misses it: RunPod exports HF_HOME in /etc/rp_environment,
+  # which .bashrc sources only after its non-interactive early return. Read
+  # it from the container's own environment (pid 1) instead, then from the
+  # RunPod file.
+  probe='tr "\0" "\n" < /proc/1/environ 2>/dev/null | sed -n "s/^HF_HOME=//p" | head -1;'
+  probe+=' [ -f /etc/rp_environment ] && . /etc/rp_environment 2>/dev/null && printf "%s\n" "${HF_HOME:-}"'
+  hf_home=$(rssh "bash -c '$probe'" 2>/dev/null | grep -m1 . || true)
+  hf_home=${hf_home%/}
   if [[ -n $hf_home && $hf_home != "$HOME/.cache/huggingface" ]]; then
     printf '%s' "$hf_tok" | rssh "mkdir -p '$hf_home' && cat > '$hf_home/token' && chmod 600 '$hf_home/token'"
   fi
+
+  # Verify against the path the container's processes will actually read,
+  # so a bad token shows up now rather than at the first private download.
+  hf_check_home=${hf_home:-\$HOME/.cache/huggingface}
+  rssh "HF_HOME=\"$hf_check_home\" python3 -c 'from huggingface_hub import whoami; print(\"hf user:\", whoami()[\"name\"])'" \
+    || echo "warning: HF token not usable from $hf_check_home" >&2
 else
   echo "warning: no huggingface.co entry in $GIT_CREDENTIALS, HF token not set" >&2
 fi

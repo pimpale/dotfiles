@@ -48,13 +48,9 @@ sudo=""
 [[ $EUID -ne 0 ]] && sudo=sudo
 
 # build-essential: cargo needs a C linker to build most crates.
-if ! command -v kak >/dev/null 2>&1 || ! command -v git >/dev/null 2>&1 \
-   || ! command -v cc >/dev/null 2>&1 || ! command -v curl >/dev/null 2>&1 \
-   || ! command -v nvtop >/dev/null 2>&1; then
-  $sudo apt-get update -qq
-  $sudo apt-get install -y -qq --no-install-recommends \
-    kakoune git git-lfs curl ca-certificates build-essential nvtop
-fi
+$sudo apt-get update -qq
+$sudo apt-get install -y -qq --no-install-recommends \
+  kakoune git git-lfs curl ca-certificates build-essential htop nvtop
 
 # Rust toolchain -> ~/.cargo/bin. The installer adds ~/.cargo/bin to
 # ~/.profile and ~/.bashrc; config.fish already has it on PATH.
@@ -106,8 +102,10 @@ if [[ -n $hf_tok ]]; then
 
   # Verify against the path the container's processes will actually read,
   # so a bad token shows up now rather than at the first private download.
+  # Run it through uvx (installed above) rather than the image's python,
+  # which may not have huggingface_hub installed.
   hf_check_home=${hf_home:-\$HOME/.cache/huggingface}
-  rssh "HF_HOME=\"$hf_check_home\" python3 -c 'from huggingface_hub import whoami; print(\"hf user:\", whoami()[\"name\"])'" \
+  rssh "HF_HOME=\"$hf_check_home\" \$HOME/.local/bin/uvx -q --from huggingface_hub hf auth whoami" \
     || echo "warning: HF token not usable from $hf_check_home" >&2
 else
   echo "warning: no huggingface.co entry in $GIT_CREDENTIALS, HF token not set" >&2

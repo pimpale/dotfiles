@@ -2,9 +2,10 @@
 # configure_remote.sh <ssh-host>
 #
 # Sets up a fresh pod: installs kakoune, rust (rustup) and uv, clones
-# and installs dotfiles,
-# copies git credentials, and writes the HF token (taken from the
-# huggingface.co entry in .git-credentials) where huggingface_hub reads it.
+# and installs dotfiles, mirrors root's ssh keys to uid 1000 (ubuntu)
+# when logged in as root, copies git credentials, and writes the HF token
+# (taken from the huggingface.co entry in .git-credentials) where
+# huggingface_hub reads it.
 # Safe to re-run.
 #
 # Overridable via environment:
@@ -70,6 +71,32 @@ else
   git clone -q "$repo" "$HOME/dotfiles"
 fi
 sh "$HOME/dotfiles/install.sh" 2>/dev/null
+
+# RunPod drops you in as root, and some tools refuse to run as root. Mirror
+# root's authorized_keys into the uid-1000 user (ubuntu on stock images) so
+# the same key can log in as that user. The user is not created here: if
+# nothing has uid 1000, this is skipped.
+if [[ $EUID -eq 0 && -s /root/.ssh/authorized_keys ]]; then
+  if entry=$(getent passwd 1000); then
+    IFS=: read -r user _ _ _ _ home _ <<<"$entry"
+    if [[ -n $home && -d $home ]]; then
+      keys=$home/.ssh/authorized_keys
+      mkdir -p "$home/.ssh"
+      touch "$keys"
+      # Only real key lines from root; skip any already present verbatim.
+      grep -E '^[^#[:space:]]' /root/.ssh/authorized_keys \
+        | grep -vxFf "$keys" >> "$keys" || true
+      chmod 700 "$home/.ssh"
+      chmod 600 "$keys"
+      chown -R "$user:" "$home/.ssh"
+      echo "copied root's ssh keys to $user (uid 1000)"
+    else
+      echo "warning: uid 1000 ($user) has no home dir, ssh keys not copied" >&2
+    fi
+  else
+    echo "warning: no uid 1000 user, ssh keys not copied" >&2
+  fi
+fi
 REMOTE
 
 if [[ ! -f $GIT_CREDENTIALS ]]; then

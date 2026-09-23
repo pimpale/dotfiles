@@ -1,0 +1,14 @@
+#!/bin/sh
+# Wayland counterpart of etc/.xinitrc: run this from the tty instead of `sway`.
+# ~/.pam_environment is no longer read by pam, so IM vars must be set here.
+
+# fcitx5: native Wayland apps (GTK, Firefox, Electron/VSCode) talk to fcitx5
+# via sway's input-method protocol and need no env var. XWayland apps need
+# XMODIFIERS; Qt apps use the fcitx module. GTK_IM_MODULE is deliberately
+# left unset so GTK apps use the Wayland text-input path.
+export XMODIFIERS=@im=fcitx
+export QT_IM_MODULE=fcitx
+
+export XDG_CURRENT_DESKTOP=sway
+
+exec sway "$@"

@@ -33,3 +33,4 @@ install fish
 install sway
 install nix
 install hypr
+install xdg-desktop-portal

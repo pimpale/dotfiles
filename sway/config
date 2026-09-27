@@ -122,8 +122,8 @@ bindsym $mod+Shift+0 move container to workspace 10
 bindsym $mod+g [floating] move scratchpad
 bindsym $mod+shift+g [floating] scratchpad show
 
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+# reload Sway configuration
+bindsym $mod+Shift+r reload
 
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+z exec "swaymsg exit"
@@ -190,7 +190,7 @@ bar {
 }
 
 # floating windows
-for_window [app_id="flameshot"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
+for_window [app_id="flameshot"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="zoom"] floating enable
 for_window [class="Qemu-system-x86_64"] floating enable

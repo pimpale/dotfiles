@@ -203,10 +203,10 @@ bindsym $mod+Shift+equal exec dotfiles-increase-backlight 5 # increase screen br
 bindsym $mod+Shift+minus exec dotfiles-decrease-backlight 5 # decrease screen brightness
 
 # volume
-bindsym XF86AudioRaiseVolume exec pamixer -i 2 && pkill -RTMIN+1 i3blocks
-bindsym XF86AudioLowerVolume exec pamixer -d 2 && pkill -RTMIN+1 i3blocks
-bindsym $mod+equal exec pamixer -i 2 && pkill -RTMIN+1 i3blocks
-bindsym $mod+minus exec pamixer -d 2 && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+ && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%- && pkill -RTMIN+1 i3blocks
+bindsym $mod+equal exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+ && pkill -RTMIN+1 i3blocks
+bindsym $mod+minus exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%- && pkill -RTMIN+1 i3blocks
 
 # Play
 bindsym XF86AudioPlay exec playerctl play-pause
@@ -216,6 +216,8 @@ bindsym XF86AudioMute exec pamixer -t && pkill -RTMIN+1 i3blocks
 
 # Autostart apps
 exec --no-startup-id "fcitx5"
+exec --no-startup-id "statusbar2"
+exec --no-startup-id "/home/fidgetsinner/run_statusbar.sh"
 exec --no-startup-id "mako"
 exec --no-startup-id "systembus-notify"
 exec --no-startup-id "nm-applet"

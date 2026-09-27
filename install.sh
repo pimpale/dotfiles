@@ -33,3 +33,6 @@ install fish
 install sway
 install nix
 install hypr
+
+# Register the interactive screenshot clipboard action in the current session.
+sh "$pwd/bin/configure_screenshooter.sh"
